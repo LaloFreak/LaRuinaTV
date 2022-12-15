@@ -1,0 +1,35 @@
+@font-face {
+  font-family: Bebas Neue;
+  src: url('./fonts/BebasNeue.otf');
+}
+
+body {
+  margin: 0;
+  font-family: Bebas Neue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  overflow-x: hidden;
+  background: linear-gradient(168deg, rgb(0, 0, 0) 20% , #171717 120%);
+  background-attachment: scroll;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* Estilos scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* ancho barra */
+  height: 100%;
+  position: absolute;
+  }
+::-webkit-scrollbar-track {
+  background: linear-gradient(168deg, rgb(0, 0, 0) 20% , #171717 120%);
+  }
+::-webkit-scrollbar-thumb {
+  background: #fff2; /* color barra */
+  border-radius: 1px; /* borde barra */
+  }
+::-webkit-scrollbar-thumb:hover {
+  background: #fff4; /* color barra hover */
+  }

@@ -1,0 +1,56 @@
+import React, { useEffect } from 'react';
+import st from "../Utils/css/Sliders.module.css"
+import Nav from '../Utils/Nav';
+import Visor from '../Utils/Visor';
+import Footer from '../Utils/Footer';
+import Sliders from '../Utils/Sliders';
+import { BrowserCss } from './css/BrowserCss';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { GlobalStates } from '../../functions/GlobalStates';
+import { getCategorias, getLoggedAccount, getPosts, getUsers, resetMedia } from '../../middlewares/redux/actions';
+
+const Browser = () => {
+    BrowserCss()
+    const dispatch = useDispatch()
+    const visorList = useSelector(state=>state.visorList)
+    const sliderCategoria = (categoria) => visorList.filter(e=>e.categoria.find(el=>el===categoria))
+    const listaCategorias = useSelector(state=>state.listaCategorias)
+    GlobalStates()
+    useEffect(()=>{
+        dispatch(getUsers())
+        dispatch(getPosts())
+        dispatch(resetMedia())
+        dispatch(getLoggedAccount())
+    },[dispatch])
+    useEffect(()=>{
+        dispatch(getCategorias(visorList))
+    },[visorList, dispatch])
+
+    let id = 0
+    return (
+        <div className='browserBody'>
+{/* ----------------------NAV---------------------- */}
+                         <Nav/>
+
+{/* ---------------------VISOR--------------------- */}
+                        <Visor/>
+
+{/* --------------------SLIDERS-------------------- */}
+    {   
+        listaCategorias? 
+        ([...new Set(listaCategorias)].map(e=>
+            {
+                if(id === 0){ id++; return <Sliders titulo={'Contenido'} categoria={visorList} style={st} id={`s`}key={`s`}/>}
+                else{id = e.id; return <Sliders titulo={e} categoria={sliderCategoria(e)} style={st} id={`s${e.id}`} key={`s${id}`}/>}
+            }
+        )) : null
+    }
+
+{/* ---------------------FOOTER--------------------- */}
+                        <Footer/>
+        </div>
+    )
+}
+
+export default Bro
