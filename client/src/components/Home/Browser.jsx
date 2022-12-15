@@ -53,4 +53,4 @@ const Browser = () => {
     )
 }
 
-export default Bro
+export default Browser
