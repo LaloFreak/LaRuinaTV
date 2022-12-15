@@ -1,7 +1,7 @@
 const express = require('express')
 const server = express.Router()
-const { getMedia } = require('../Controllers/index.js')
-const { getAventuras } = require('../Functions/index.js')
+const { getMedia } = require('../../../Controllers/index.js')
+const { getAventuras } = require('../../../Functions/index.js')
 
 server.get('/', (req, res) => {
     res.send(getMedia())

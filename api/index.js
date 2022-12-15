@@ -1,10 +1,10 @@
 const express = require('express')
 const server = express()
 const morgan = require('morgan')
-const terminalKiller = require('./Routes/terminalkiller.js')
-const media = require('./Routes/media.js')
-const wog = require('./Routes/wog.js')
-const users = require('./Routes/users.js')
+const terminalKiller = require('./Routes/server/terminalkiller.js')
+const users = require('./Routes/server/users.js')
+const media = require('./Routes/apps/laruinatv/media.js')
+const wog = require('./Routes/apps/worldofgwerh/wog.js')
 
 server.use((req, res, next)=>{
     console.log(req.headers.origin)
@@ -12,9 +12,6 @@ server.use((req, res, next)=>{
         'http://localhost:3000',
         'http://localhost:3001',
         'http://localhost:3002',
-        'http://192.168.100.16:3000',
-        'http://192.168.100.16:3001',
-        'http://192.168.100.16:3002',
     ];
     if(corsList.includes(req.headers.origin)){   
         res.header('Access-Control-Allow-Origin', (req.headers.origin));
@@ -23,13 +20,13 @@ server.use((req, res, next)=>{
         res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
         next();
     }
-    else{
-        res.header('Access-Control-Allow-Origin', ('*'));
-        res.header('Access-Control-Allow-Credentials', 'true');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested, Content-Type, Accept');
-        res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-        next();
-    }
+    // else{
+    //     res.header('Access-Control-Allow-Origin', ('*'));
+    //     res.header('Access-Control-Allow-Credentials', 'true');
+    //     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested, Content-Type, Accept');
+    //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    //     next();
+    // }
 });
 
 server.use(morgan('dev'))

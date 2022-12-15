@@ -1,8 +1,8 @@
 const express = require('express')
 const server = express.Router()
-const users = require('../users.json')
+const users = require('../../users.json')
 const fs = require('fs');
-const { findUser, findUserByIp, findUsers } = require('../Functions/users');
+const { findUser, findUserByIp, findUsers } = require('../../Functions/users');
 
 server.post('/create', async (req,res,next)=>{
     const {alias, email, contraseña} = req.body;

@@ -1,5 +1,5 @@
-const {mediaList} = require('./images/index.js')
-const {talesList} = require('./sounds/index.js')
+const {mediaList} = require('../misc/images/index.js')
+const {talesList} = require('../misc/sounds/index.js')
 
 function addMedia(el){
     if(!mediaList.includes(el)){

@@ -1,4 +1,4 @@
-const {API_KEY} = require('../Controllers/sounds/consts.js')
+const {API_KEY} = require('../misc/sounds/consts.js')
 const axios = require('axios');
 const AVENTURAS = require('../misc/Aventuras.json')
 

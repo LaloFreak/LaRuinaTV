@@ -1,6 +1,6 @@
 const express = require('express')
 const server = express.Router()
-const {getTales} = require('../Controllers/index.js')
+const {getTales} = require('../../../Controllers/index.js')
 
 server.get('/',(req,res)=>{
     let tale  = getTales()
