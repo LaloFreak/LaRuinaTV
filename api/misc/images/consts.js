@@ -6,7 +6,6 @@ const visor = 'visor'
 const slider = 'slider'
 const presentation = 'presentation'
 
-
 const DB_LARUINATV_MEDIA = [
     {
         urlID: {idYT:'a', idSpty:'', idDrive:''},
