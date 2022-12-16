@@ -1,16 +1,20 @@
-const {API_KEY} = require('../misc/sounds/consts.js')
+require('dotenv').config();
+const { VISOR_FOLDER, SLIDER_FOLDER, API_KEY } = process.env;
+const {APIKEY} = require('../misc/sounds/consts.js')
 const axios = require('axios');
-const AVENTURAS = require('../misc/Aventuras.json')
+const AVENTURAS = require('../misc/Aventuras.json');
+const { getDriveFiles, getElemUrlById } = require('./googleapis.js');
 
 function getAventuras(){
     return AVENTURAS
 }
 
-function getElemUrlById(e){
-    return `https://www.googleapis.com/drive/v3/files/${e}?supportsAllDrives=true&key=${API_KEY}&alt=media`
-}
+async function pushMedia(db, arr){
+    const driveVisorFiles = await getDriveFiles(VISOR_FOLDER, API_KEY)
+    const driveSliderFiles = await getDriveFiles(SLIDER_FOLDER, API_KEY)
+    driveVisorFiles.reverse()
+    driveSliderFiles.reverse()
 
-function pushMedia(db, arr){
     for(let i in db){
         let media = {
             id: Number(i),
@@ -19,8 +23,8 @@ function pushMedia(db, arr){
             titulo: db[i].titulo,
             artista: db[i].artista,
             tag: db[i].tag,
-            img: db[i].visorImgID !== ''? getElemUrlById(db[i].visorImgID) : getElemUrlById(db[i].sliderImgID),
-            sliderImg: db[i].sliderImgID !== ''? getElemUrlById(db[i].sliderImgID) : getElemUrlById(db[i].visorImgID),
+            img: await getElemUrlById(driveVisorFiles[i].id, API_KEY),
+            sliderImg: driveSliderFiles[i]? await getElemUrlById(driveSliderFiles[i].id, API_KEY) : await getElemUrlById(driveVisorFiles[i].id, API_KEY),
             icon: db[i].icon,
             categoria:db[i].categoria,
             boton1:db[i].boton1,
@@ -31,7 +35,7 @@ function pushMedia(db, arr){
 }
 
 function pushTales(arr, idFolder){
-    axios.get(`https://www.googleapis.com/drive/v3/files?q=%22${idFolder}%22%20in%20parents&key=${API_KEY}`)
+    axios.get(`https://www.googleapis.com/drive/v3/files?q=%22${idFolder}%22%20in%20parents&key=${APIKEY}`)
     .then(res =>{
         db = res.data.files
         for(let i in db){
@@ -40,7 +44,7 @@ function pushTales(arr, idFolder){
                 attributes:
                 {
                     name: db[i].name,
-                    url: getElemUrlById(db[i].id),
+                    url: getElemUrlById(db[i].id, APIKEY),
                 }
             }
             arr.push(tale)
