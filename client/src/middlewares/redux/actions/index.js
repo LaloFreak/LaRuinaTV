@@ -1,5 +1,17 @@
 import axios from 'axios'
-import { GET_POSTS, GET_INFO, GET_CATEGORIAS, GET_MEDIATYPE, GET_MEDIAURL, RESET_MEDIA, NEW_USER_CREATE, LOG_IN, LOG_OUT, CURRENT_VISOR, RESET_VISOR, LOGGED_ACCOUNT, GET_USERS } from '../../misc'
+import { 
+    GET_POSTS, 
+    GET_INFO, 
+    GET_CATEGORIAS, 
+    GET_MEDIATYPE, 
+    GET_MEDIAURL, 
+    RESET_MEDIA, 
+    NEW_USER_CREATE, 
+    LOG_IN, LOG_OUT, 
+    CURRENT_VISOR, 
+    RESET_VISOR, 
+    LOGGED_ACCOUNT, 
+    GET_USERS } from '../../misc'
 
 export function getPosts() {
     return function(dispatch) {
@@ -32,27 +44,27 @@ export function getInfo(id) {
 export function getCategorias(lista) {
     const listCat = []
     lista.map((e)=>{return e.categoria.map(el=>{return listCat.push(el)})})
-    return{
+    return {
         type: GET_CATEGORIAS,
         payload: new Set(listCat)
     }
 }
 
 export function getMediaType(mediainfo) {
-    return{
+    return {
         type: GET_MEDIATYPE,
         payload: mediainfo
     }
 }
 export function getMediaUrl(mediainfo) {
-    return{
+    return {
         type: GET_MEDIAURL,
         payload: mediainfo
     }
 }
 
 export function resetMedia() {
-    return{
+    return {
         type: RESET_MEDIA,
         payload: []
     }
@@ -65,7 +77,7 @@ export function newUserCreate(newUser){
         dispatch({
             type: NEW_USER_CREATE,
             payload: res.data,
-        });
+        })
     })
     .catch(error => {
         return { payload: error };           
@@ -79,7 +91,7 @@ export function getLoggedAccount(){
             dispatch({
                 type: LOGGED_ACCOUNT,
                 payload: res.data   
-            });
+            })
         })
         .catch(() => {
             return { payload: false };         
@@ -94,11 +106,11 @@ export function logIn(input){
             dispatch({
                 type: LOG_IN,
                 payload: res.data
-            });
+            })
         })
         .catch(() => {
             return { payload: false };         
-        });
+        })
     }
 }
 
@@ -136,10 +148,10 @@ export function getUsers(){
             dispatch({
                 type: GET_USERS,
                 payload: res.data
-            });
+            })
         })
         .catch((e) => {
             console.log(e)
-        });
+        })
     }
 }

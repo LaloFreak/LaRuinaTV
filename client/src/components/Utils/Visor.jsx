@@ -42,8 +42,8 @@ const Visor = () => {
             setVisorArtista(artista)
             setVisorTypeMedia(typeMedia)
 
-            dispatch(getCurrentVisor(randomNumber))
             dispatch(getResetVisor())
+            dispatch(getCurrentVisor(randomNumber))
             document.querySelector('.visorPostInfo').style.animationName='infoScale'
             document.querySelector('.visorPostInfo').style.animationIterationCount=inf
             document.querySelector('.visorPostInfo').style.animationDuration=`${timeInterval}s`
