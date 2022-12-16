@@ -7,7 +7,6 @@ import {
     LOG_IN, LOG_OUT, 
     RESET_MEDIA,
     RESET_VISOR } from "../../misc";
-
 import iconYT from '../../../design/yt-icon.png'
 import iconSpty from '../../../design/spty-icon.png'
 import iconDrive from '../../../design/drive-icon.png'

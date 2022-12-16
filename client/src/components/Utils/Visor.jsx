@@ -9,7 +9,7 @@ import visorIntroVideo from '../../design/laruina-intro.mp4'
 
 const Visor = () => {
     const dispatch = useDispatch()
-    const [i, setI] = useState(1)
+    const [i, setI] = useState(0)
     const [visorID, setVisorID] = useState()
     const [visorTag, setVisorTag] = useState()
     const [visorBtn1, setVisorBtn1] = useState()
@@ -28,9 +28,9 @@ const Visor = () => {
         const max = visorList.length
         let timeInterval = 20
         let interval = null
+        dispatch(getNextVisor(i%max))
         interval = setInterval(()=>{    
             dispatch(getResetVisor())
-            dispatch(getNextVisor(i%max))
             setI(k=>k+1)
             setVisorID(id)
             setVisorTag(tag)
