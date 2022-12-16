@@ -8,7 +8,7 @@ import {
     RESET_MEDIA, 
     NEW_USER_CREATE, 
     LOG_IN, LOG_OUT, 
-    CURRENT_VISOR, 
+    NEXT_VISOR, 
     RESET_VISOR, 
     LOGGED_ACCOUNT, 
     GET_USERS } from '../../misc'
@@ -129,9 +129,9 @@ export function logOut(userName){
     }
 }
 
-export function getCurrentVisor(index){
+export function getNextVisor(index){
     return {
-        type: CURRENT_VISOR,
+        type: NEXT_VISOR,
         payload: index
     }
 }

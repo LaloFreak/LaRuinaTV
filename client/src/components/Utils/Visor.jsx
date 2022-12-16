@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { getCurrentVisor, getResetVisor } from '../../middlewares/redux/actions';
+import { getNextVisor, getResetVisor } from '../../middlewares/redux/actions';
 import playIconb from '../../design/ruinatv-icon-play-b.png'
 import playIconn from '../../design/ruinatv-icon-play-n.png'
 import visorIntroVideo from '../../design/laruina-intro.mp4'
 
 const Visor = () => {
     const dispatch = useDispatch()
-    const [i, setI] = useState(0)
+    const [i, setI] = useState(1)
     const [visorID, setVisorID] = useState()
     const [visorTag, setVisorTag] = useState()
     const [visorBtn1, setVisorBtn1] = useState()
@@ -21,15 +21,16 @@ const Visor = () => {
     const [visorArtista, setVisorArtista] = useState()
     const [visorTypeMedia, setVisorTypeMedia] = useState()
     const visorList = useSelector(state=>state.visorList)
-    const currentVisor = useSelector(state=>state.currentVisor)
-    const {urlID, id, img, artista, titulo, typeMedia, tag, icon, boton1, info} = currentVisor.at(0)
+    const nextVisor = useSelector(state=>state.nextVisor)
+    const {urlID, id, img, artista, titulo, typeMedia, tag, icon, boton1, info} = nextVisor.at(0)
     useEffect(() => {
         let inf = 99999+i
         const max = visorList.length
-        const randomNumber = i%max
         let timeInterval = 20
         let interval = null
         interval = setInterval(()=>{    
+            dispatch(getResetVisor())
+            dispatch(getNextVisor(i%max))
             setI(k=>k+1)
             setVisorID(id)
             setVisorTag(tag)
@@ -41,9 +42,7 @@ const Visor = () => {
             setVisorTitulo(titulo)
             setVisorArtista(artista)
             setVisorTypeMedia(typeMedia)
-
-            dispatch(getResetVisor())
-            dispatch(getCurrentVisor(randomNumber))
+            
             document.querySelector('.visorPostInfo').style.animationName='infoScale'
             document.querySelector('.visorPostInfo').style.animationIterationCount=inf
             document.querySelector('.visorPostInfo').style.animationDuration=`${timeInterval}s`
@@ -52,8 +51,8 @@ const Visor = () => {
             document.querySelector('.visorBG').style.animationIterationCount=inf
             document.querySelector('.visorBG').style.animationDuration=`${timeInterval}s`
         }, timeInterval*1000)
-        return () =>  (clearInterval(interval, getResetVisor, timeInterval))
-    },[urlID, id, img, artista, titulo, typeMedia, tag, icon, boton1, info, dispatch, i, visorList])
+        return () =>  (clearInterval(interval, timeInterval))
+    },[urlID, id, img, artista, titulo, typeMedia, tag, icon, boton1, info, i, visorList, dispatch])
 
 
     return(

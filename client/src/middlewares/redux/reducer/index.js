@@ -1,4 +1,4 @@
-import { CURRENT_VISOR, GET_CATEGORIAS, GET_INFO, GET_MEDIATYPE, GET_POSTS, GET_USERS, LOGGED_ACCOUNT, LOG_IN, LOG_OUT, RESET_MEDIA, RESET_VISOR } from "../../misc";
+import { NEXT_VISOR, GET_CATEGORIAS, GET_INFO, GET_MEDIATYPE, GET_POSTS, GET_USERS, LOGGED_ACCOUNT, LOG_IN, LOG_OUT, RESET_MEDIA, RESET_VISOR } from "../../misc";
 
 import iconYT from '../../../design/yt-icon.png'
 import iconSpty from '../../../design/spty-icon.png'
@@ -42,7 +42,7 @@ const initialState = {
                 }
     },
     visorList: [],
-    currentVisor:[
+    nextVisor:[
         {
             urlID:{},
             typeMedia:'',
@@ -77,7 +77,7 @@ export default function rootReducer(state = initialState, action){
             return{
                 ...state,
                 visorList: action.payload,
-                currentVisor: action.payload
+                nextVisor: action.payload
             }
         case GET_INFO:
             return{
@@ -128,16 +128,16 @@ export default function rootReducer(state = initialState, action){
                 currentUser: false
 
             }
-        case CURRENT_VISOR:
+        case NEXT_VISOR:
             return{
                 ...state,
-                currentVisor: [state.visorList[action.payload]]
+                nextVisor: [state.visorList[action.payload]]
 
             }
         case RESET_VISOR:
             return{
                 ...state,
-                currentVisor:[{urlID:{}, typeMedia:'', titulo:'', artista:'', tag:'', img:'', sliderImg:'',icon:[], categoria:[], boton1:'', info:''}],
+                nextVisor:[{urlID:{}, typeMedia:'', titulo:'', artista:'', tag:'', img:'', sliderImg:'',icon:[], categoria:[], boton1:'', info:''}],
             }
         default:
             return {...state}

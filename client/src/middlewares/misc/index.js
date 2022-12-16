@@ -9,7 +9,7 @@ export const NEW_USER_CREATE = 'NEW_USER_CREATE'
 export const LOGGED_ACCOUNT = 'LOGGED_ACCOUNT'
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
-export const CURRENT_VISOR = 'CURRENT_VISOR'
+export const NEXT_VISOR = 'CURRENT_VISOR'
 export const RESET_VISOR = 'RESET_VISOR'
 
 
