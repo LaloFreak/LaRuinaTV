@@ -5,5 +5,4 @@ export function GlobalStates(){
     const history = useHistory()
     const userState = useSelector(state=>state.userState)
     return userState==="online"? history.push('/browser'): history.push('/')
-
 }

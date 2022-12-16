@@ -13,6 +13,82 @@ import {
     LOGGED_ACCOUNT, 
     GET_USERS } from '../../misc'
 
+/*-----------------Auth----------------*/
+export function newUserCreate(newUser){
+    return function (dispatch){
+    axios.post('http://localhost:3001/users/create', newUser)
+    .then(res => {
+        dispatch({
+            type: NEW_USER_CREATE,
+            payload: res.data,
+        })
+    })
+    .catch(error => {
+        return { payload: error };           
+    })}
+}
+
+export function getLoggedAccount(){
+    return function (dispatch){ 
+        axios.get('http://localhost:3001/users/loggedaccount')
+        .then(res => {
+            dispatch({
+                type: LOGGED_ACCOUNT,
+                payload: res.data   
+            })
+        })
+        .catch(() => {
+            return { payload: false };         
+        })
+    }
+}
+
+export function logIn(input){
+    return function (dispatch){ 
+        axios.post('http://localhost:3001/users/login',input)
+        .then(res => {
+            dispatch({
+                type: LOG_IN,
+                payload: res.data
+            })
+        })
+        .catch(() => {
+            return { payload: false }      
+        })
+    }
+}
+
+export function logOut(userName){
+    return function (dispatch){ 
+        axios.post('http://localhost:3001/users/logout',userName)
+        .then(res => {
+            dispatch({
+                type: LOG_OUT,
+                payload: res.data
+            });
+        })
+        .catch(() => {
+            return { payload: true }
+        });
+    }
+}
+
+export function getUsers(){
+    return function (dispatch){ 
+        axios.get('http://localhost:3001/users/users')
+        .then(res => {
+            dispatch({
+                type: GET_USERS,
+                payload: res.data
+            })
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+    }
+}
+
+/*----------------Media----------------*/
 export function getPosts() {
     return function(dispatch) {
         fetch('http://localhost:3001/media')
@@ -56,6 +132,7 @@ export function getMediaType(mediainfo) {
         payload: mediainfo
     }
 }
+
 export function getMediaUrl(mediainfo) {
     return {
         type: GET_MEDIAURL,
@@ -70,88 +147,18 @@ export function resetMedia() {
     }
 }
 
-export function newUserCreate(newUser){
-    return function (dispatch){
-    axios.post('http://localhost:3001/users/create', newUser)
-    .then(res => {
-        dispatch({
-            type: NEW_USER_CREATE,
-            payload: res.data,
-        })
-    })
-    .catch(error => {
-        return { payload: error };           
-    });
-}}
-
-export function getLoggedAccount(){
-    return function (dispatch){ 
-        axios.get('http://localhost:3001/users/loggedaccount')
-        .then(res => {
-            dispatch({
-                type: LOGGED_ACCOUNT,
-                payload: res.data   
-            })
-        })
-        .catch(() => {
-            return { payload: false };         
-        });
-    }
-}
-
-export function logIn(input){
-    return function (dispatch){ 
-        axios.post('http://localhost:3001/users/login',input)
-        .then(res => {
-            dispatch({
-                type: LOG_IN,
-                payload: res.data
-            })
-        })
-        .catch(() => {
-            return { payload: false };         
-        })
-    }
-}
-
-export function logOut(userName){
-    return function (dispatch){ 
-        axios.post('http://localhost:3001/users/logout',userName)
-        .then(res => {
-            dispatch({
-                type: LOG_OUT,
-                payload: res.data
-            });
-        })
-        .catch(() => {
-            return { payload: true };
-        });
-    }
-}
-
 export function getNextVisor(index){
     return {
         type: NEXT_VISOR,
         payload: index
     }
 }
+
 export function getResetVisor(){
     return {
-        type: RESET_VISOR,
+        type: RESET_VISOR
     }
 }
+/*------------Filter&Search------------*/
 
-export function getUsers(){
-    return function (dispatch){ 
-        axios.get('http://localhost:3001/users/users')
-        .then(res => {
-            dispatch({
-                type: GET_USERS,
-                payload: res.data
-            })
-        })
-        .catch((e) => {
-            console.log(e)
-        })
-    }
-}
+/*--------------Pagination-------------*/

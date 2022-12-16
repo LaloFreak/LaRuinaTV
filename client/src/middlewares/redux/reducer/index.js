@@ -1,4 +1,12 @@
-import { NEXT_VISOR, GET_CATEGORIAS, GET_INFO, GET_MEDIATYPE, GET_POSTS, GET_USERS, LOGGED_ACCOUNT, LOG_IN, LOG_OUT, RESET_MEDIA, RESET_VISOR } from "../../misc";
+import { 
+    NEXT_VISOR, 
+    GET_CATEGORIAS, 
+    GET_INFO, GET_MEDIATYPE, 
+    GET_POSTS, GET_USERS, 
+    LOGGED_ACCOUNT, 
+    LOG_IN, LOG_OUT, 
+    RESET_MEDIA,
+    RESET_VISOR } from "../../misc";
 
 import iconYT from '../../../design/yt-icon.png'
 import iconSpty from '../../../design/spty-icon.png'
@@ -65,7 +73,7 @@ const initialState = {
     searchedMedia: [],
     mediaFound: {},
 
-/*------------Pagination------------*/
+/*--------------Pagination--------------*/
   
 
 
@@ -73,6 +81,34 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action){
     switch (action.type){
+/*----------------Auth----------------*/
+        case LOGGED_ACCOUNT:
+            return{
+                ...state,
+                loggedAccount: action.payload.at(0).log,
+                userState: action.payload.at(0).log? "online":"offline",
+                currentUser: action.payload.alias
+            }
+        case GET_USERS:
+            return{
+                ...state,
+                userList: [...new Set([...state.userList, action.payload.alias])],    
+            }
+        case LOG_IN:
+            return{
+                ...state,
+                loggedAccount: action.payload.state,
+                currentUser: action.payload.current,
+                userState: "online"
+            }
+        case LOG_OUT:
+            return{
+                ...state,
+                loggedAccount: false,
+                userState: "offline",
+                currentUser: false
+            }
+/*----------------Media----------------*/
         case GET_POSTS:
             return{
                 ...state,
@@ -85,7 +121,7 @@ export default function rootReducer(state = initialState, action){
                 infoDetailViewer: action.payload
             }
         case GET_MEDIATYPE:
-            return {
+            return{
             ...state,
             }
         case GET_CATEGORIAS:
@@ -98,41 +134,10 @@ export default function rootReducer(state = initialState, action){
                 ...state,
                 infoDetailViewer: action.payload
             }
-
-        case LOGGED_ACCOUNT:
-            return{
-                ...state,
-                loggedAccount: action.payload.at(0).log,
-                userState: action.payload.at(0).log? "online":"offline",
-                currentUser: action.payload.alias
-
-            }
-            case GET_USERS:
-                return{
-                    ...state,
-                    userList: [...new Set([...state.userList, action.payload.alias])],    
-                }
-        case LOG_IN:
-            return{
-                ...state,
-                loggedAccount: action.payload.state,
-                currentUser: action.payload.current,
-                userState: "online"
-
-            }
-        case LOG_OUT:
-            return{
-                ...state,
-                loggedAccount: false,
-                userState: "offline",
-                currentUser: false
-
-            }
         case NEXT_VISOR:
             return{
                 ...state,
                 nextVisor: [state.visorList[action.payload]]
-
             }
         case RESET_VISOR:
             return{

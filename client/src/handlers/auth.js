@@ -3,8 +3,9 @@ export function onChangeInput(eN,eV,inSt,funct) {
     return funct({
     ...inSt,
     [eN]: eV
-    });
+    })
 }
+
 export function OnSubmitCreate(e,inSt,act1,funct1) {
     return (
         e.preventDefault(),
