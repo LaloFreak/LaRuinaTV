@@ -1,10 +1,13 @@
 import { 
     NEXT_VISOR, 
     GET_CATEGORIAS, 
-    GET_INFO, GET_MEDIATYPE, 
-    GET_POSTS, GET_USERS, 
+    GET_INFO,
+    GET_MEDIATYPE, 
+    GET_POSTS,
+    GET_USERS, 
     LOGGED_ACCOUNT, 
-    LOG_IN, LOG_OUT, 
+    LOG_IN,
+    LOG_OUT, 
     RESET_MEDIA,
     RESET_VISOR } from "../../misc";
 import iconYT from '../../../design/yt-icon.png'
@@ -15,10 +18,10 @@ import iconDescarga from '../../../design/descarga-icon.png'
 
 const initialState = {
 /*----------------Auth----------------*/
-    userList: false,
+    userList: [],
     currentUser: false,
     loggedAccount: false,
-    userState: false,
+    userState: "offline",
 
 /*----------------Media----------------*/
     typeMediaList: 
@@ -48,20 +51,34 @@ const initialState = {
                     urlDescarga:{url:'', img:iconDescarga},
                 }
     },
-    visorList: [],
+    visorList: [
+        {
+            urlID:[''],
+            typeMedia:[''],
+            titulo:[''],
+            artista:[''],
+            tag:[''],
+            img:[''],
+            sliderImg:[''],
+            icon:[''],
+            categoria:[''],
+            boton1:[''],
+            info:['']
+        }
+    ],
     nextVisor:[
         {
-            urlID:{},
-            typeMedia:'',
-            titulo:'',
-            artista:'',
-            tag:'',
-            img:'',
-            sliderImg:'',
-            icon:[],
-            categoria:[],
-            boton1:'',
-            info:''
+            urlID:[''],
+            typeMedia:[''],
+            titulo:[''],
+            artista:[''],
+            tag:[''],
+            img:[''],
+            sliderImg:[''],
+            icon:[''],
+            categoria:[''],
+            boton1:[''],
+            info:['']
         }
     ],
     infoDetailViewer: [],
@@ -84,9 +101,7 @@ export default function rootReducer(state = initialState, action){
         case LOGGED_ACCOUNT:
             return{
                 ...state,
-                loggedAccount: action.payload.at(0).log,
-                userState: action.payload.at(0).log? "online":"offline",
-                currentUser: action.payload.alias
+                loggedAccount: action.payload.log,
             }
         case GET_USERS:
             return{
@@ -96,16 +111,45 @@ export default function rootReducer(state = initialState, action){
         case LOG_IN:
             return{
                 ...state,
-                loggedAccount: action.payload.state,
                 currentUser: action.payload.current,
-                userState: "online"
+                userState: action.payload.state? "online":"offline",
+
             }
         case LOG_OUT:
             return{
                 ...state,
-                loggedAccount: false,
-                userState: "offline",
-                currentUser: false
+                currentUser: action.payload.current,
+                userState: action.payload.state? "online":"offline",
+                nextVisor:[            
+                    {
+                        urlID:[''],
+                        typeMedia:[''],
+                        titulo:[''],
+                        artista:[''],
+                        tag:[''],
+                        img:[''],
+                        sliderImg:[''],
+                        icon:[''],
+                        categoria:[''],
+                        boton1:[''],
+                        info:['']
+                    }
+                ],
+                visorList:[            
+                    {
+                        urlID:[''],
+                        typeMedia:[''],
+                        titulo:[''],
+                        artista:[''],
+                        tag:[''],
+                        img:[''],
+                        sliderImg:[''],
+                        icon:[''],
+                        categoria:[''],
+                        boton1:[''],
+                        info:['']
+                    }
+                ],
             }
 /*----------------Media----------------*/
         case GET_POSTS:
@@ -141,7 +185,21 @@ export default function rootReducer(state = initialState, action){
         case RESET_VISOR:
             return{
                 ...state,
-                nextVisor:[{urlID:{}, typeMedia:'', titulo:'', artista:'', tag:'', img:'', sliderImg:'',icon:[], categoria:[], boton1:'', info:''}],
+                nextVisor:[            
+                    {
+                        urlID:[''],
+                        typeMedia:[''],
+                        titulo:[''],
+                        artista:[''],
+                        tag:[''],
+                        img:[''],
+                        sliderImg:[''],
+                        icon:[''],
+                        categoria:[''],
+                        boton1:[''],
+                        info:['']
+                    }
+                ],
             }
         default:
             return {...state}

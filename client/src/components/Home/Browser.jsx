@@ -7,19 +7,18 @@ import Sliders from '../Utils/Sliders';
 import { BrowserCss } from './css/BrowserCss';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { GlobalStates } from '../../functions/GlobalStates';
 import { getCategorias, getLoggedAccount, getPosts, getUsers, resetMedia } from '../../middlewares/redux/actions';
 
 const Browser = () => {
+    const userState = useSelector(state=> state.userState)
     BrowserCss()
     const dispatch = useDispatch()
     const visorList = useSelector(state=>state.visorList)
     const sliderCategoria = (categoria) => visorList.filter(e=>e.categoria.find(el=>el===categoria))
     const listaCategorias = useSelector(state=>state.listaCategorias)
-    GlobalStates()
     useEffect(()=>{
-        dispatch(getUsers())
         dispatch(getPosts())
+        dispatch(getUsers())
         dispatch(resetMedia())
         dispatch(getLoggedAccount())
     },[dispatch])
@@ -34,7 +33,10 @@ const Browser = () => {
                          <Nav/>
 
 {/* ---------------------VISOR--------------------- */}
-                        <Visor/>
+    {
+        userState === "online"? 
+                        <Visor/>:null
+    }
 
 {/* --------------------SLIDERS-------------------- */}
     {   

@@ -6,17 +6,15 @@ import LogIn from '../Auth/LogIn'
 import s from './css/Landing.module.css'
 import { LandingCss } from './css/LandingCss'
 import { useDispatch } from 'react-redux'
-import { GlobalStates } from '../../functions/GlobalStates'
 import { getLoggedAccount, getUsers } from '../../middlewares/redux/actions'
 
 const Landing = () => {
     const dispatch = useDispatch()
-    LandingCss()
-    GlobalStates()
-    dispatch(getUsers())
     useEffect(()=>{
-      dispatch(getLoggedAccount())
+        dispatch(getLoggedAccount())
     },[dispatch])
+    dispatch(getUsers())
+    LandingCss()
     return (
     <div className={s.landingBody}>
         <div className={s.ruinaLogoCont}>

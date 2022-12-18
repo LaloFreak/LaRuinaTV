@@ -9,6 +9,9 @@ server.get('/',(req,res)=>{
     res.status(400).send("El id ingresado es incorrecto")
 })
 
+server.get('/aventuras', (req, res) => {
+    res.send(getAventuras())
+})
 server.get('/:id',(req, res) => {
     let {id} = req.params
     let tale  = getTales().find(el => el.id === +id)
@@ -16,8 +19,5 @@ server.get('/:id',(req, res) => {
     res.status(400).send("El id ingresado es incorrecto")
 })
 
-server.get('/aventuras', (req, res) => {
-    res.send(getAventuras())
-})
 
 module.exports = server

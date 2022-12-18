@@ -2,8 +2,9 @@ const express = require('express')
 const server = express.Router()
 const { getMedia } = require('../../../Controllers/index.js')
 
-server.get('/', (req, res) => {
-    res.send(getMedia())
+server.get('/', async (req, res) => {
+    const media = getMedia()
+    res.status(200).send(media)
 })
 
 server.get('/:id',(req, res) => {

@@ -5,8 +5,10 @@ import Browser from './components/Home/Browser';
 import Landing from './components/Home/Landing';
 import View from './components/Pages/View';
 import Play from './components/Pages/Play';
+import { GlobalStates } from './functions/GlobalStates';
 
 function App() {
+  GlobalStates()
   return (
     <div className="App">
         <Switch>

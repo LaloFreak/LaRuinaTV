@@ -11,7 +11,9 @@ const Slider = (props) => {
             id={`${key}ListaItems`}
             >
             {
-                props.categoria?.map(e=>{
+                props?
+                (
+                    props.categoria.map(e=>{
                     return(
                         <li value={e.id} key={e.id}>
                             <div className={s.sliderItem}>
@@ -33,8 +35,8 @@ const Slider = (props) => {
                             </div>
                         </li>
                     )
-                })
-                }
+                })) : null
+            }
             </ul>
         </div>
     )

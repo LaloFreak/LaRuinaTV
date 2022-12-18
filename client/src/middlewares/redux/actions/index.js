@@ -37,8 +37,8 @@ export function getLoggedAccount(){
                 payload: res.data   
             })
         })
-        .catch(() => {
-            return { payload: false };         
+        .catch((e) => {
+            console.log(e);
         })
     }
 }
@@ -52,8 +52,8 @@ export function logIn(input){
                 payload: res.data
             })
         })
-        .catch(() => {
-            return { payload: false }      
+        .catch((e) => {
+            console.log(e);
         })
     }
 }
@@ -67,9 +67,9 @@ export function logOut(userName){
                 payload: res.data
             });
         })
-        .catch(() => {
-            return { payload: true }
-        });
+        .catch((e) => {
+            console.log(e);
+        })
     }
 }
 

@@ -22,7 +22,7 @@ const Visor = () => {
     const [visorTypeMedia, setVisorTypeMedia] = useState()
     const visorList = useSelector(state=>state.visorList)
     const nextVisor = useSelector(state=>state.nextVisor)
-    const {urlID, id, img, artista, titulo, typeMedia, tag, icon, boton1, info} = nextVisor.at(0)
+    const {urlID, id, img, artista, titulo, typeMedia, tag, icon, boton1, info} = nextVisor? nextVisor.at(0) : nextVisor
     useEffect(() => {
         let inf = 99999+i
         const max = visorList.length
@@ -62,7 +62,8 @@ const Visor = () => {
                 <img className='visorBG' src={visorImage} alt='' />
             </div>
             <div className='visorCanvas'></div>
-            <div className='visorPostInfo'>
+            {visorList? 
+            (<div className='visorPostInfo'>
                 <div className='visorPostArtista'>
                     <p>{visorArtista}</p>
                 </div>
@@ -101,7 +102,7 @@ const Visor = () => {
                         }
                     </ul>
                 </div>
-            </div>
+            </div>) : null}
         </div>
     )
 }

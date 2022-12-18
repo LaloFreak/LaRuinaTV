@@ -1,12 +1,12 @@
 require('dotenv').config();
 const { VISOR_FOLDER, SLIDER_FOLDER, API_KEY } = process.env;
-const { getDriveFiles, getElemUrlById } = require('../../googleapis.js');
+const { getDriveFiles, getElemUrlById } = require('../../drive/index.js');
 
 async function pushMedia(db, arr){
-    const driveVisorFiles = await getDriveFiles(VISOR_FOLDER, API_KEY)
-    const driveSliderFiles = await getDriveFiles(SLIDER_FOLDER, API_KEY)
-    driveVisorFiles.reverse()
-    driveSliderFiles.reverse()
+    const driveVisorFiles = await getDriveFiles(VISOR_FOLDER)
+    const driveSliderFiles = await getDriveFiles(SLIDER_FOLDER)
+    driveVisorFiles? driveVisorFiles.reverse() : driveVisorFiles
+    driveSliderFiles? driveSliderFiles.reverse() : driveSliderFiles
 
     for(let i in db){
         let media = {
@@ -16,8 +16,8 @@ async function pushMedia(db, arr){
             titulo: db[i].titulo,
             artista: db[i].artista,
             tag: db[i].tag,
-            img: await getElemUrlById(driveVisorFiles[i].id, API_KEY),
-            sliderImg: driveSliderFiles[i]? await getElemUrlById(driveSliderFiles[i].id, API_KEY) : await getElemUrlById(driveVisorFiles[i].id, API_KEY),
+            img: driveVisorFiles? await getElemUrlById(driveVisorFiles[i].id) : '',
+            sliderImg: driveSliderFiles[i]? await getElemUrlById(driveSliderFiles[i].id) : await getElemUrlById(driveVisorFiles[i].id),
             icon: db[i].icon,
             categoria:db[i].categoria,
             boton1:db[i].boton1,

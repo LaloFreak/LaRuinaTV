@@ -1,4 +1,3 @@
-const e = require('express')
 const users = require('../users.json')
 
 function findUser(a,m){
@@ -7,13 +6,12 @@ function findUser(a,m){
 }
 
 function findUsers(ip){
-    const usersFound = users.filter(e=>{return (e.userStatus.find(e=>e.find(el=>el.id === ip)))}).at(0)+
-    console.log(usersFound);
+    const usersFound = users.filter(e=>{return (e.userStatus.filter(e=>e.ip.find(el=>el.id === ip)))}).at(0)
     return usersFound 
 }
 
 function findUserByIp(ip){
-    const userFound = users.filter(e=>{return (e.userStatus.find(e=>e.id === ip && e.onlineState === true))}).at(0)
+    const userFound = users.filter(e=>{return (e.userStatus.filter(e=>e.ip.find(e=>e.id === ip && e.onlineState === true)))}).at(0)
     return userFound
 }
 
