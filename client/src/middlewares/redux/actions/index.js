@@ -15,8 +15,8 @@ import {
 
 /*-----------------Auth----------------*/
 export function newUserCreate(newUser){
-    return function (dispatch){
-    axios.post('http://localhost:3001/users/create', newUser)
+    return async function (dispatch){
+    await axios.post('http://localhost:3001/users/create', newUser)
     .then(res => {
         dispatch({
             type: NEW_USER_CREATE,
@@ -29,8 +29,8 @@ export function newUserCreate(newUser){
 }
 
 export function getLoggedAccount(){
-    return function (dispatch){ 
-        axios.get('http://localhost:3001/users/loggedaccount')
+    return async function (dispatch){ 
+        await axios.get('http://localhost:3001/users/loggedaccount')
         .then(res => {
             dispatch({
                 type: LOGGED_ACCOUNT,
@@ -44,8 +44,8 @@ export function getLoggedAccount(){
 }
 
 export function logIn(input){
-    return function (dispatch){ 
-        axios.post('http://localhost:3001/users/login',input)
+    return async function (dispatch){ 
+        await axios.post('http://localhost:3001/users/login',input)
         .then(res => {
             dispatch({
                 type: LOG_IN,
@@ -59,8 +59,8 @@ export function logIn(input){
 }
 
 export function logOut(userName){
-    return function (dispatch){ 
-        axios.post('http://localhost:3001/users/logout',userName)
+    return async function (dispatch){ 
+        await axios.post('http://localhost:3001/users/logout',userName)
         .then(res => {
             dispatch({
                 type: LOG_OUT,
@@ -74,8 +74,8 @@ export function logOut(userName){
 }
 
 export function getUsers(){
-    return function (dispatch){ 
-        axios.get('http://localhost:3001/users/users')
+    return async function (dispatch){ 
+        await axios.get('http://localhost:3001/users/users')
         .then(res => {
             dispatch({
                 type: GET_USERS,
@@ -90,13 +90,12 @@ export function getUsers(){
 
 /*----------------Media----------------*/
 export function getPosts() {
-    return function(dispatch) {
-        fetch('http://localhost:3001/media')
-        .then(res => res.json())
-        .then(data =>{
+    return async function(dispatch) {
+        await axios.get('http://localhost:3001/media')
+        .then(res =>{
             dispatch({
                 type: GET_POSTS,
-                payload: data
+                payload: res.data
             })
         })
         .catch(e => console.log(e))
@@ -104,13 +103,12 @@ export function getPosts() {
 }
 
 export function getInfo(id) {
-    return function(dispatch) {
-        fetch(`http://localhost:3001/media/${id}`)
-        .then(res => res.json())
-        .then(data =>{
+    return async function(dispatch) {
+        await axios.get(`http://localhost:3001/media/${id}`)
+        .then(res =>{
             dispatch({
                 type: GET_INFO,
-                payload: data
+                payload: res.data
             })
         })
         .catch(e => console.log(e))

@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { VISOR_FOLDER, SLIDER_FOLDER, API_KEY } = process.env;
+const { VISOR_FOLDER, SLIDER_FOLDER } = process.env;
 const { getDriveFiles, getElemUrlById } = require('../../drive/index.js');
 
 async function pushMedia(db, arr){

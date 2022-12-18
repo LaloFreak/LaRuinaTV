@@ -34,12 +34,12 @@ async function getDriveFiles(idFolder){
 
 async function getElemUrlById(id){
   try {
-  const res = await drive.files.get({
+  const res = drive.files.get({
     fileId: `${id}`,
     supportsAllDrives: 'true',
     alt: 'media'
   })
-  return res.config.url;
+  return await res.config.url;
 
   } catch (error) {
     console.log(error.message)

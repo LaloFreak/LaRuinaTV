@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Slider = (props) => {
     const key = (props.keyID)
     const s = (props.style)
+    console.log('props',props)
     return (
         <div className={s.sliderItems}>
             <ul className={s.sliderListaItems}
@@ -25,7 +26,7 @@ const Slider = (props) => {
                             titulo={e.titulo}
                             artista={e.artista}
                             img={e.sliderImg}
-                            onClick={()=>{window.scrollTo(0, 0)}}
+                            onClick={()=>{return window.scrollTo(0, 0)}}
                             ><img src={e.icon[0]} alt="" className={s.logoItem} />
                             </button>
                             </Link>

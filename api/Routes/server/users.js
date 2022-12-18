@@ -33,8 +33,6 @@ server.get('/loggedaccount', async (req, res, next)=>{
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const user = await findUserByIp(ip)
   const log = !user? false:true
-  console.log('loggedUser', log);
-  console.log('User', user);
   res.status(200).json([user, log])
 })
 
@@ -64,7 +62,6 @@ server.post('/logout', (req,res)=>{
   const {userName} = req.body;
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const user = findUser(userName, userName)
-  console.log(ip);
   users.filter(e=> e.alias===user.at(0).alias).at(0).userStatus.filter(e=> e.ip.find(e=>e.id === ip)).at(0).ip.at(0).onlineState = false
   const usersToJson = JSON.stringify(users)
 
