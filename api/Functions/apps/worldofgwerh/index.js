@@ -1,7 +1,7 @@
 const {APIKEY} = require('../../../misc/sounds/consts.js')
 const axios = require('axios');
 const AVENTURAS = require('../../../misc/Aventuras.json');
-const { getElemUrlById } = require('../../googleapis.js');
+const { getElemUrlById } = require('../../drive/index');
 
 function getAventuras(){
     return AVENTURAS
@@ -17,7 +17,7 @@ function pushTales(arr, idFolder){
                 attributes:
                 {
                     name: db[i].name,
-                    url: getElemUrlById(db[i].id, APIKEY),
+                    url: getElemUrlById(db[i].id),
                 }
             }
             arr.push(tale)

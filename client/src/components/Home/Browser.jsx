@@ -30,12 +30,12 @@ const Browser = () => {
     return (
         <div className='browserBody'>
 {/* ----------------------NAV---------------------- */}
+
                          <Nav/>
 
 {/* ---------------------VISOR--------------------- */}
     {
-        userState === "online"? 
-                        <Visor/>:null
+        userState === "online"? <Visor/>:null
     }
 
 {/* --------------------SLIDERS-------------------- */}
@@ -44,13 +44,15 @@ const Browser = () => {
         ([...new Set(listaCategorias)].map(e=>
             {
                 if(id === 0){ id++; return <Sliders titulo={'Contenido'} categoria={visorList} style={st} id={`s`}key={`s`}/>}
-                else{id = e.id; return <Sliders titulo={e} categoria={sliderCategoria(e)} style={st} id={`s${e.id}`} key={`s${id}`}/>}
+                else{id = e.id; return <Sliders titulo={e} categoria={sliderCategoria(e)} style={st} id={`s${e.id}`} key={`s${e}`}/>}
             }
         )) : null
     }
 
 {/* ---------------------FOOTER--------------------- */}
+
                         <Footer/>
+
         </div>
     )
 }

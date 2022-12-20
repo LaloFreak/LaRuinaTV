@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const Slider = (props) => {
     const key = (props.keyID)
     const s = (props.style)
-    console.log('props',props)
     return (
         <div className={s.sliderItems}>
             <ul className={s.sliderListaItems}
