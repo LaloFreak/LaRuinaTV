@@ -17,12 +17,12 @@ const Browser = () => {
     const listaCategorias = useSelector(state=>state.listaCategorias)
     const sliderCategoria = (categoria) => visorList.filter(e=>e.categoria.find(el=>el===categoria))
     useEffect(()=>{
+        dispatch(getPosts())
         dispatch(getUsers())
         dispatch(resetMedia())
         dispatch(getLoggedAccount())
     },[dispatch])
     useEffect(()=>{
-        dispatch(getPosts())
         dispatch(getCategorias(visorList))
     },[visorList, dispatch])
 

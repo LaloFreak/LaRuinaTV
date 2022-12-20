@@ -1,8 +1,9 @@
-import s from './css/SearchBar.module.css'
-import React from 'react'
+import s from './css/SearchBar.module.css';
+import React from 'react';
+import searchIcon from '../../design/search-icon.png';
 import { useDispatch, useSelector} from "react-redux";
-import { useHistory } from "react-router-dom"
-import { loadingSearchSet, searchMedia, searchStateChange, totalMedia } from '../../middlewares/redux/actions'
+import { useHistory } from "react-router-dom";
+import { loadingSearchSet, searchMedia, searchStateChange, totalMedia } from '../../middlewares/redux/actions';
 
 export const SearchBar = () => {
   const dispatch = useDispatch();
@@ -36,17 +37,17 @@ export const SearchBar = () => {
           mediaFound? 
           (
             (typeof mediaFound === 'string')?
-            <button className={s.liSearchBtnEn} type="submit" disabled={false}>
-              <img className={s.mediaEn} src={''} alt="lrr" />
+            <button className={s.liSearchBtn} type="submit" disabled={false}>
+              <img className={s.mediaSearch} src={searchIcon} width='10' alt="search" />
             </button>
             :
-            <button className={s.liSearchBtnDis} type="submit" disabled={true}>
-              <img className={s.mediaDis} src={''} alt="pkm" />
+            <button className={s.liSearchBtn} type="submit" disabled={true}>
+              <img className={s.mediaSearch} src={searchIcon} width='10' alt="search" />
             </button>
           )
           :
-          <button className={s.liSearchBtnDis} type="submit" disabled={true}>
-            <img className={s.mediaDis} src={''} alt="lrr" />
+          <button className={s.liSearchBtn} type="submit" disabled={true}>
+            <img className={s.mediaSearch} src={searchIcon} width='10' alt="search" />
           </button>
         }
       </form>
