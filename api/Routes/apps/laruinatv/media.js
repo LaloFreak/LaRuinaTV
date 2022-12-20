@@ -4,7 +4,6 @@ const { getMedia } = require('../../../Controllers/index.js')
 
 server.get('/', async (req, res) => {
     const media = await getMedia()
-    console.log(media)
     return res.status(200).send(media)
 })
 

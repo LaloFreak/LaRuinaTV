@@ -33,17 +33,7 @@ async function getDriveFiles(idFolder){
 }
 
 async function getElemUrlById(id){
-  try {
-  const res = await drive.files.get({
-    fileId: `${id}`,
-    supportsAllDrives: 'true',
-    alt: 'media'
-  })
-  return res.request.responseURL;
-
-  } catch (error) {
-    console.log(error.message)
-  }
+  return `https://www.googleapis.com/drive/v3/files/${id}?supportsAllDrives=true&key=AIzaSyCAR1h1chPnnLY6N8R8jF2yn6WR85eYqBI&alt=media`
 }
 
 
