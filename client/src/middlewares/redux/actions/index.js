@@ -24,7 +24,7 @@ export function newUserCreate(newUser){
         })
     })
     .catch(error => {
-        return { payload: error };           
+        return { payload: error };
     })}
 }
 
@@ -158,5 +158,21 @@ export function getResetVisor(){
     }
 }
 /*------------Filter&Search------------*/
+export function loadingSearchSet(){
+
+}
+
+export function searchMedia(){
+
+}
+
+export function searchStateChange(){
+
+}
+
+export function totalMedia(){
+    
+}
+
 
 /*--------------Pagination-------------*/

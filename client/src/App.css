@@ -5,14 +5,34 @@
   background: linear-gradient(to bottom, #000000cf, rgba(255, 255, 255, 0));
   z-index: 9999999999;
   overflow: hidden;
+  list-style: none;
 }
 .navCont:hover{
   transition-duration: 1s;
   filter: drop-shadow(2px 5px 8px);
 }
-.ruinaNavMenu{
+.navMenu{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   list-style-type: none;
-  text-align: center;
+  height: 100%;
+}
+.navSearchBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style-type: none;
+  height: 100%;
+  position: absolute;
+  right: 20px;
+  top: 11px;
+}
+.navLogOut{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style-type: none;
   height: 100%;
 }
 .navCont li{
@@ -49,6 +69,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   margin-right: 30px;
 }
 .ruinaLogo{

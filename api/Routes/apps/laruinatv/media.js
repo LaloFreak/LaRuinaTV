@@ -4,6 +4,7 @@ const { getMedia } = require('../../../Controllers/index.js')
 
 server.get('/', async (req, res) => {
     const media = await getMedia()
+    console.log(media)
     return res.status(200).send(media)
 })
 
@@ -13,6 +14,5 @@ server.get('/:id', (req, res) => {
     if (media) return res.send(media)
     res.status(400).send("El id ingresado es incorrecto")
 })
-
 
 module.exports = server

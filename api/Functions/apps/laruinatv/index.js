@@ -16,7 +16,7 @@ async function pushMedia(db, arr){
             titulo: db[i].titulo,
             artista: db[i].artista,
             tag: db[i].tag,
-            img: driveVisorFiles? await getElemUrlById(driveVisorFiles[i].id) : '',
+            img: driveVisorFiles[i]? await getElemUrlById(driveVisorFiles[i].id) : '',
             sliderImg: driveSliderFiles[i]? await getElemUrlById(driveSliderFiles[i].id) : await getElemUrlById(driveVisorFiles[i].id),
             icon: db[i].icon,
             categoria:db[i].categoria,

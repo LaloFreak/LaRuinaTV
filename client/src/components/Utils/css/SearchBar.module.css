@@ -1,0 +1,11 @@
+.liSearchBtn{
+    background: none;
+    border: none;
+}
+.mediaSearch{
+    opacity: .8;
+    transition-duration: .5;
+}
+.mediaSearch:hover{
+    opacity: 1;
+}

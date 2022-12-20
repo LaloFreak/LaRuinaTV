@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ruinaLogo from '../../design/ruina-logo.png';
 import LogOut from '../Auth/LogOut';
+import { SearchBar } from './SearchBar';
 
 const Nav = () => {
     const [posNav, setPosNav] = useState()
@@ -26,13 +27,19 @@ const Nav = () => {
                 <img className='ruinaLogo' src={ruinaLogo} alt="La Ruina TV" width='120' />
             </Link>
         </div>
-        <ul className='ruinaNavMenu'>
+        <ul className='navMenu'>
             <li>Novedades</li>
             <li>Lanzamientos</li>
             <li>Colaborar</li>
             <li>Tienda</li>
-            <li><LogOut/></li>
+            <ul className='navSearchBar'>
+            <ul className='navLogOut'>
+                <li><SearchBar/></li>
+            </ul>
+                <li><LogOut/></li>
+            </ul>
         </ul>
+
         </div>
     )
 }
