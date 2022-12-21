@@ -5,9 +5,9 @@ import { getPosts, getUsers, resetMedia } from "../middlewares/redux/actions";
 export function GlobalStates(){
     const history = useHistory()
     const dispatch = useDispatch()
+    const redirect = useSelector(state=>state.redirect)
     dispatch(resetMedia())
     dispatch(getUsers())
     dispatch(getPosts())
-    const redirect = useSelector(state=>state.redirect)
     history.push(redirect)
 }
