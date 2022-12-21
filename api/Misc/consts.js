@@ -3,7 +3,7 @@ const { wogIcon, ruinaRecordsIcon} = process.env
 
 const DB_LARUINATV_MEDIA = [
     {
-        id: 0,
+        id: 000,
         urlID: {idYT:'a', idSpty:'', idDrive:''},
         typeMedia: 'serie',
         titulo: "Ainulindalë",
@@ -15,7 +15,7 @@ const DB_LARUINATV_MEDIA = [
         info: 'Serie basada en los escritos de la extensa obra del autor británico "J.R.R Tolkien" que forman parte del "Legendarium'
     },
     {
-        id: 1,
+        id: 001,
         urlID: {idYT:'mZiusH3M8Uc&ab', idSpty:'', idDrive:''},
         typeMedia: 'musica',
         titulo: "Círculo Vicioso",
@@ -27,7 +27,7 @@ const DB_LARUINATV_MEDIA = [
         info:'Álbum de la banda "Derrumbe Punk". Grabado, mezclado y masterizado en nuestro estudio "La Ruina Records"'
     },
     {
-        id: 2,
+        id: 002,
         urlID: {idYT:'a', idSpty:'', idDrive:''},
         typeMedia: 'musica',
         titulo: "Paranoia en PerroNegro",
@@ -39,7 +39,7 @@ const DB_LARUINATV_MEDIA = [
         info:'Lanzamiento en vivo del álbum "Pobre, Muerto, Aburrido" de la banda "Paranoia" en las estancias de "PerroNegro"'
     },
     {
-        id: 3,
+        id: 003,
         urlID: {idWeb:'a', idDrive:'', urlDescarga:''},
         typeMedia: 'app',
         titulo: "Gwerh, the Bard",
@@ -51,7 +51,7 @@ const DB_LARUINATV_MEDIA = [
         info:'Acércate a escuchar las historias que el bardo tiene para contarte'
     },
     {
-        id: 4,
+        id: 004,
         urlID: {idYT:'a', idSpty:'', idDrive:''},
         typeMedia: 'musica',
         titulo: "Brutópolis",
@@ -63,7 +63,7 @@ const DB_LARUINATV_MEDIA = [
         info:'Álbum de la banda "Urticaria", postproducido por "La Ruina Records"'
     },
     {
-        id: 5,
+        id: 005,
         urlID: {idYT:'a', idSpty:'', idDrive:''},
         typeMedia: 'musica',
         titulo: "Barrios Bajos Blues",
@@ -75,7 +75,7 @@ const DB_LARUINATV_MEDIA = [
         info:'Álbum de la banda valdiviana de blues pesado llamada "Caña Blues", grabado en nuestro estudio "La Ruina Records"'
     },
     {
-        id: 6,
+        id: 006,
         urlID: {idWeb:'a', idDrive:'', urlDescarga:''},
         typeMedia: 'libro',
         titulo: "La Espada Oxidada",
