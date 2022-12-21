@@ -9,6 +9,8 @@ import visorIntroVideo from '../../design/laruina-intro.mp4'
 
 const Visor = () => {
     const dispatch = useDispatch()
+    const visorList = useSelector(state=>state.visorList)
+    const nextVisor = useSelector(state=>state.nextVisor)
     const [i, setI] = useState(0)
     const [visorID, setVisorID] = useState()
     const [visorTag, setVisorTag] = useState()
@@ -20,8 +22,6 @@ const Visor = () => {
     const [visorTitulo, setVisorTitulo] = useState()
     const [visorArtista, setVisorArtista] = useState()
     const [visorTypeMedia, setVisorTypeMedia] = useState()
-    const visorList = useSelector(state=>state.visorList)
-    const nextVisor = useSelector(state=>state.nextVisor)
     const {urlID, id, img, artista, titulo, typeMedia, tag, icon, boton1, info} = nextVisor? nextVisor.at(0) : nextVisor
     useEffect(() => {
         let inf = 99999+i

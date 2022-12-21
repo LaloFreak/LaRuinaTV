@@ -1,11 +1,12 @@
 require('dotenv').config();
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN, API_KEY } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN, ACCESS_TOKEN, API_KEY } = process.env;
 const { google } = require('googleapis');
 
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
-  REDIRECT_URI
+  REDIRECT_URI,
+  ACCESS_TOKEN
 )
 
 oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
