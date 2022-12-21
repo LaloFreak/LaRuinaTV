@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import playIconb from '../../design/ruinatv-icon-play-b.png'
 
-const SlidersBtns = (props) => {
-    const [name, setName] = useState('')
-    const [code, setCode] = useState('')
-    // const [url, setUrl] = useState('')
-    // const [descripcion, setDescripcion] = useState('')
+const SliderBtns = (props) => {
+
     const k = -210
     const [i, setPosi] = useState(k)
     const [n, setPosn] = useState(-k)
@@ -119,4 +116,4 @@ const SlidersBtns = (props) => {
     )
 }
 
-export default SlidersBtns
+export default SliderBtns

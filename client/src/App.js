@@ -5,6 +5,10 @@ import Browser from './components/Home/Browser';
 import Landing from './components/Home/Landing';
 import View from './components/Pages/View';
 import Play from './components/Pages/Play';
+import { Novedades } from './components/Pages/Novedades';
+import { Tienda } from './components/Pages/Tienda';
+import { Lanzamientos } from './components/Pages/Lanzamientos';
+import { Colaborar } from './components/Pages/Colaborar';
 import { GlobalStates } from './functions/GlobalStates';
 
 function App() {
@@ -17,6 +21,18 @@ function App() {
           </Route>
           <Route exact path='/browser'>
             <Browser />
+          </Route>
+          <Route exact path='/novedades'>
+            <Novedades />
+          </Route>
+          <Route exact path='/lanzamientos'>
+            <Lanzamientos />
+          </Route>
+          <Route exact path='/colaborar'>
+            <Colaborar />
+          </Route>
+          <Route exact path='/tienda'>
+            <Tienda />
           </Route>
           <Route path={'/view/v=:urlid=_type_=:typeMedia=_id_=:id'}>
             <View/>

@@ -1,24 +1,13 @@
-const {mediaList} = require('../misc/images/index.js')
-const {talesList} = require('../misc/sounds/index.js')
-/*-----------------World of Gwerh-----------------*/ 
+require('dotenv').config();
+const { getPostList } = require('../Functions/apps/index.js')
+const { VISOR_FOLDER, SLIDER_FOLDER } = process.env;
+const { DB_LARUINATV_MEDIA } = require('../Misc/consts.js')
 
-function getTales(){
-    return talesList
+async function getPosts(){
+    const posts = await getPostList(DB_LARUINATV_MEDIA, VISOR_FOLDER, SLIDER_FOLDER)
+    return posts
 }
 
-/*-----------------La Ruina TV-----------------*/ 
-
-function addMedia(el){
-    if(!mediaList.includes(el)){
-        mediaList.push(el)
-        return "Media agregada con éxito"
-    }else{
-        throw new Error ("Ya existe") 
-    }
+module.exports = {
+    getPosts
 }
-
-function getMedia(){
-    return mediaList
-}
-
-module.exports = {addMedia, getMedia, getTales}

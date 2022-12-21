@@ -4,6 +4,12 @@ const users = require('../../users.json')
 const fs = require('fs');
 const { findUser, findUserByIp, findUsers } = require('../../Functions/users');
 
+server.get('/', (req,res)=>{
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const usersFound = findUsers(ip)
+  return res.status(200).send(usersFound)
+})
+
 server.post('/create', async (req,res,next)=>{
     const {alias, email, contraseña} = req.body;
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -32,7 +38,7 @@ server.post('/create', async (req,res,next)=>{
 server.get('/loggedaccount', async (req, res, next)=>{
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const user = await findUserByIp(ip)
-  const log = !user? false:true
+  const log = await user.userStatus.at(0).ip.at(0).onlineState
   res.status(200).json([user, log])
 })
 
@@ -73,11 +79,6 @@ server.post('/logout', (req,res)=>{
   res.status(200).json({state:false, current:''})
 })
 
-server.get('/users', (req,res)=>{
-  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  const usersFound = findUsers(ip)
-  return res.status(200).send(usersFound)
-})
 
 
 module.exports = server

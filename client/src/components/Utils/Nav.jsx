@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import ruinaLogo from '../../design/ruina-logo.png';
+import { Link } from 'react-router-dom';
 import LogOut from '../Auth/LogOut';
 import { SearchBar } from './SearchBar';
 
@@ -28,10 +28,11 @@ const Nav = () => {
             </Link>
         </div>
         <ul className='navMenu'>
-            <li>Novedades</li>
-            <li>Lanzamientos</li>
-            <li>Colaborar</li>
-            <li>Tienda</li>
+            <li><Link to='/browser'>Inicio</Link></li>
+            <li><Link to='/novedades'>Novedades</Link></li>
+            <li><Link to='/lanzamientos'>Lanzamientos</Link></li>
+            <li><Link to='/colaborar'>Colaborar</Link></li>
+            <li><Link to='/tienda'> Tienda </Link></li>
             <ul className='navSearchBar'>
             <ul className='navLogOut'>
                 <li><SearchBar/></li>

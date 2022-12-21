@@ -14,6 +14,21 @@ import {
     GET_USERS } from '../../misc'
 
 /*-----------------Auth----------------*/
+export function getUsers(){
+    return async function (dispatch){ 
+        await axios.get('http://localhost:3001/users')
+        .then(res => {
+            dispatch({
+                type: GET_USERS,
+                payload: res.data
+            })
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+    }
+}
+
 export function newUserCreate(newUser){
     return async function (dispatch){
     await axios.post('http://localhost:3001/users/create', newUser)
@@ -34,7 +49,7 @@ export function getLoggedAccount(){
         .then(res => {
             dispatch({
                 type: LOGGED_ACCOUNT,
-                payload: res.data   
+                payload: res.data
             })
         })
         .catch((e) => {
@@ -73,25 +88,10 @@ export function logOut(userName){
     }
 }
 
-export function getUsers(){
-    return async function (dispatch){ 
-        await axios.get('http://localhost:3001/users/users')
-        .then(res => {
-            dispatch({
-                type: GET_USERS,
-                payload: res.data
-            })
-        })
-        .catch((e) => {
-            console.log(e)
-        })
-    }
-}
-
-/*----------------Media----------------*/
+/*----------------Posts----------------*/
 export function getPosts() {
     return async function(dispatch) {
-        await axios.get('http://localhost:3001/media')
+        await axios.get('http://localhost:3001/posts')
         .then(res =>{
             dispatch({
                 type: GET_POSTS,
@@ -104,7 +104,7 @@ export function getPosts() {
 
 export function getInfo(id) {
     return async function(dispatch) {
-        await axios.get(`http://localhost:3001/media/${id}`)
+        await axios.get(`http://localhost:3001/posts/${id}`)
         .then(res =>{
             dispatch({
                 type: GET_INFO,

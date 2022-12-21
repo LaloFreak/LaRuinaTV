@@ -9,12 +9,12 @@ import { useDispatch } from 'react-redux'
 import { getLoggedAccount, getUsers } from '../../middlewares/redux/actions'
 
 const Landing = () => {
+    LandingCss()
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getLoggedAccount())
+        dispatch(getUsers())
     },[dispatch])
-    dispatch(getUsers())
-    LandingCss()
     return (
     <div className={s.landingBody}>
         <div className={s.ruinaLogoCont}>
