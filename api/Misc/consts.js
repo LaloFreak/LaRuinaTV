@@ -1,13 +1,9 @@
 require('dotenv').config();
-const APIKEY = 'AIzaSyCAR1h1chPnnLY6N8R8jF2yn6WR85eYqBI'
-const wogIcon = `https://www.googleapis.com/drive/v3/files/1GooFCd-i4jJvKbGNcBNYf2id8KhWihi-?supportsAllDrives=true&key=${APIKEY}&alt=media`
-const ruinaRecordsIcon = `https://www.googleapis.com/drive/v3/files/1c2LQ76p3hpT56cVqKJy_SIcd-6aFgAZG?supportsAllDrives=true&key=${APIKEY}&alt=media`
-const visor = 'visor'
-const slider = 'slider'
-const presentation = 'presentation'
+const { wogIcon, ruinaRecordsIcon} = process.env
 
 const DB_LARUINATV_MEDIA = [
     {
+        id: 0,
         urlID: {idYT:'a', idSpty:'', idDrive:''},
         typeMedia: 'serie',
         titulo: "Ainulindalë",
@@ -92,4 +88,6 @@ const DB_LARUINATV_MEDIA = [
     },
 ]
 
-module.exports = {APIKEY, DB_LARUINATV_MEDIA, wogIcon, ruinaRecordsIcon, visor, slider, presentation}
+module.exports = { 
+    DB_LARUINATV_MEDIA
+}

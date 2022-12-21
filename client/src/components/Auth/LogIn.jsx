@@ -10,6 +10,7 @@ import s from './css/LogIn.module.css'
 
 const LogIn = () => {
     let loggedAccount = useSelector(state=> state.loggedAccount)
+    let redirect = useSelector(state=> state.redirect)
     let history = useHistory();
     const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const LogIn = () => {
   
     useEffect(() => {
       setInput(inputStateInitial)
-      if (loggedAccount) {return history.push('/browser')}
+      history.push(redirect)
     },[loggedAccount, history, setInput]);
 
   return (

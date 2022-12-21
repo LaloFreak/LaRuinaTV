@@ -12,10 +12,19 @@ body {
   overflow-x: hidden;
   background: linear-gradient(168deg, rgb(0, 0, 0) 20% , #171717 120%);
   background-attachment: scroll;
+  background-repeat: no-repeat;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:link, :visited{
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.774);
+}
+:link:hover{
+  color: white;
 }
 /* Estilos scrollbar */
 ::-webkit-scrollbar {

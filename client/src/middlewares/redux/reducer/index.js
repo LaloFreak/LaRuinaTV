@@ -22,6 +22,7 @@ const initialState = {
     currentUser: false,
     loggedAccount: false,
     userState: "offline",
+    redirect: "/",
 
 /*----------------Media----------------*/
     typeMediaList: 
@@ -101,7 +102,11 @@ export default function rootReducer(state = initialState, action){
         case LOGGED_ACCOUNT:
             return{
                 ...state,
-                loggedAccount: action.payload.log,
+                loggedAccount: action.payload.at(1),
+                currentUser: action.payload.at(1)? action.payload.at(0).alias : '',
+                userState: action.payload.at(1)? "online":"offline",
+                redirect: action.payload.at(1)? "/browser":"/"
+
             }
         case GET_USERS:
             return{
@@ -113,12 +118,14 @@ export default function rootReducer(state = initialState, action){
                 ...state,
                 currentUser: action.payload.current,
                 userState: action.payload.state? "online":"offline",
-
+                redirect: action.payload.state? "/browser":"/",
+                loggedAccount: action.state,
             }
         case LOG_OUT:
             return{
                 ...state,
                 currentUser: action.payload.current,
+                redirect: action.payload.state? "/browser":"/",
                 userState: action.payload.state? "online":"offline",
                 nextVisor:[            
                     {
@@ -161,7 +168,7 @@ export default function rootReducer(state = initialState, action){
         case GET_INFO:
             return{
                 ...state,
-                infoDetailViewer: action.payload
+                infoDetailViewer: action.payload.at(0)
             }
         case GET_MEDIATYPE:
             return{

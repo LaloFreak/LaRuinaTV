@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import st from "../Utils/css/Sliders.module.css"
+import s from "../Utils/css/Slider.module.css"
 import Nav from '../Utils/Nav';
 import Visor from '../Utils/Visor';
 import Footer from '../Utils/Footer';
-import Sliders from '../Utils/Sliders';
+import Slider from '../Utils/Slider';
 import { BrowserCss } from './css/BrowserCss';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -17,15 +17,15 @@ const Browser = () => {
     const listaCategorias = useSelector(state=>state.listaCategorias)
     const sliderCategoria = (categoria) => visorList.filter(e=>e.categoria.find(el=>el===categoria))
     useEffect(()=>{
-        dispatch(getPosts())
-        dispatch(getUsers())
         dispatch(resetMedia())
+        dispatch(getUsers())
+        dispatch(getPosts())
         dispatch(getLoggedAccount())
     },[dispatch])
     useEffect(()=>{
         dispatch(getCategorias(visorList))
     },[visorList, dispatch])
-
+ 
     let id = 0
     return (
         <div className='browserBody'>
@@ -35,18 +35,18 @@ const Browser = () => {
 
 {/* ---------------------VISOR--------------------- */}
     {
-        userState === "online"? <Visor/>:null
+        (userState? userState === "online":null && visorList? visorList.length > 1 : null )? <Visor/> : dispatch(getPosts())
     }
 
 {/* --------------------SLIDERS-------------------- */}
     {   
-        listaCategorias? 
+        (userState? userState === "online":null && visorList? visorList.length > 1 : null )? 
         ([...new Set(listaCategorias)].map(e=>
             {
-                if(id === 0){ id++; return <Sliders titulo={'Contenido'} categoria={visorList} style={st} id={`s`}key={`s`}/>}
-                else{id = e.id; return <Sliders titulo={e} categoria={sliderCategoria(e)} style={st} id={`s${e.id}`} key={`s${e}`}/>}
+                if(id === 0){ id++; return <Slider titulo={'Contenido'} categoria={visorList} style={s} id={`s`}key={`s`}/>}
+                else{id = e.id; return <Slider titulo={e} categoria={sliderCategoria(e)} style={s} id={`s${e.id}`} key={`s${e}`}/>}
             }
-        )) : null
+        )) : dispatch(getPosts())
     }
 
 {/* ---------------------FOOTER--------------------- */}
