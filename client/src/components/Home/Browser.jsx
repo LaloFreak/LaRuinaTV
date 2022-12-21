@@ -35,12 +35,12 @@ const Browser = () => {
 
 {/* ---------------------VISOR--------------------- */}
     {
-        (userState? userState === "online":null && visorList? visorList.length > 1 : null )? <Visor/> : dispatch(getPosts())
+        (userState? userState === "online":null && visorList?.length > 1 )? <Visor/> : dispatch(getPosts())
     }
 
 {/* --------------------SLIDERS-------------------- */}
     {   
-        (userState? userState === "online":null && visorList? visorList.length > 1 : null )? 
+        (userState? userState === "online":null && visorList?.length > 1)? 
         ([...new Set(listaCategorias)].map(e=>
             {
                 if(id === 0){ id++; return <Slider titulo={'Contenido'} categoria={visorList} style={s} id={`s`}key={`s`}/>}
