@@ -12,7 +12,7 @@ const DB_LARUINATV_MEDIA = [
         icon: [wogIcon, ruinaRecordsIcon],
         categoria:['Música', 'Sello Arruinados', 'Series'],
         boton1:'Ver',
-        info: 'Serie basada en los escritos de la extensa obra del autor británico "J.R.R Tolkien" que forman parte del "Legendarium'
+        info: 'Serie basada en los escritos de la extensa obra del autor británico "J.R.R Tolkien" que forman parte del "Legendarium"'
     },
     {
         id: 001,
@@ -84,7 +84,7 @@ const DB_LARUINATV_MEDIA = [
         icon: [ruinaRecordsIcon],
         categoria:['Literatura', 'App y Descargables'],
         boton1:'Leer',
-        info:'El relato de un errante sin destino en viaje sin retorno'
+        info:'El relato de un errante sin destino en un viaje sin retorno'
     },
 ]
 

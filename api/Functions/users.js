@@ -6,17 +6,17 @@ function findUser(a,m){
 }
 
 function findUsers(ip){
-    const usersFound = users.filter(e=>{return (e.userStatus.filter(e=>e.ip.find(el=>el.id === ip)))}).at(0)
+    const usersFound = users.filter(e=>{return (e.userStatus.filter(e=>{return e.ip.filter(el=>{return el.id === ip})}))})
     return usersFound 
 }
 
 function findUserByIp(ip){
-    const userFound = users.filter(e=>{return (e.userStatus.filter(e=>e.ip.find(e=>e.id === ip && e.onlineState === true)))}).at(0)
+    const userFound = users.filter(e=>{return (e.userStatus.find(e=>{return e.ip.find(e=>{return (e.id === ip) && (e.onlineState === true)})}))}).at(0)
     return userFound
 }
 
 function findUserState(ip){
-    const userFound = users.filter(e=>{return (e.userStatus.at(0).ip.find(e=>e.id === ip))})
+    const userFound = users.filter(e=>{return (e.userStatus.find(e=>{return e.ip.find(e=>{return (e.id === ip)})}))})
     return userFound
 }
 

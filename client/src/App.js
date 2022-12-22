@@ -10,11 +10,15 @@ import { Tienda } from './components/Pages/Tienda';
 import { Lanzamientos } from './components/Pages/Lanzamientos';
 import { Colaborar } from './components/Pages/Colaborar';
 import { GlobalStates } from './functions/GlobalStates';
+import { SlideCanvas } from './components/Utils/SlideCanvas';
+import { useSelector } from 'react-redux';
 
 function App() {
   GlobalStates()
+  const option = useSelector(state=>state.option)
   return (
     <div className="App">
+      <SlideCanvas option={option? option:""}/>
         <Switch>
           <Route exact path='/'>
             <Landing />

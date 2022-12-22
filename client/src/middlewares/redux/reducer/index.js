@@ -9,7 +9,9 @@ import {
     LOG_IN,
     LOG_OUT, 
     RESET_MEDIA,
-    RESET_VISOR } from "../../misc";
+    RESET_VISOR, 
+    OPTION,
+    RESET_OPTION} from "../../misc";
 import iconYT from '../../../design/yt-icon.png'
 import iconSpty from '../../../design/spty-icon.png'
 import iconDrive from '../../../design/drive-icon.png'
@@ -23,6 +25,7 @@ const initialState = {
     loggedAccount: false,
     userState: "offline",
     redirect: "/",
+    option: "",
 
 /*----------------Media----------------*/
     typeMediaList: 
@@ -99,6 +102,16 @@ const initialState = {
 export default function rootReducer(state = initialState, action){
     switch (action.type){
 /*----------------Auth----------------*/
+        case OPTION:
+            return{
+                ...state,
+                option: action.payload
+            }
+        case RESET_OPTION:
+            return{
+                ...state,
+                option: ""
+            }
         case LOGGED_ACCOUNT:
             return{
                 ...state,
@@ -111,7 +124,7 @@ export default function rootReducer(state = initialState, action){
         case GET_USERS:
             return{
                 ...state,
-                userList: [...new Set([...state.userList, action.payload.alias])],    
+                userList: action.payload.map(e=>{return e.alias}),    
             }
         case LOG_IN:
             return{

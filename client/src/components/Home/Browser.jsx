@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import s from "../Utils/css/Slider.module.css"
+import s from "../Utils/css/Slider.module.css";
 import Nav from '../Utils/Nav';
 import Visor from '../Utils/Visor';
 import Footer from '../Utils/Footer';

@@ -11,9 +11,23 @@ import {
     NEXT_VISOR, 
     RESET_VISOR, 
     LOGGED_ACCOUNT, 
-    GET_USERS } from '../../misc'
+    GET_USERS, 
+    OPTION, 
+    RESET_OPTION} from '../../misc'
 
 /*-----------------Auth----------------*/
+export function setOption(e){
+    return({
+        type: OPTION,
+        payload: e
+    })
+}
+export function resetOption(){
+    return({
+        type: RESET_OPTION,
+    })
+}
+
 export function getUsers(){
     return async function (dispatch){ 
         await axios.get('http://localhost:3001/users')
