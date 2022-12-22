@@ -1,3 +1,7 @@
+.menuBtnTv{
+    opacity: .8;
+}
+
 .profileBtnCont{
     display: flex;
     flex-direction: column;

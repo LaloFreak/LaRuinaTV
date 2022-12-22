@@ -1,13 +1,10 @@
 import React from 'react'
-import Nav from '../Utils/Nav'
+import { BodyCss } from '../../functions/BodyCss'
 
 export const Tienda = () => {
+  BodyCss()
   return (
     <div>
-{/* ----------------------NAV---------------------- */}
-
-                        <Nav/>
-
         <h1>Tienda</h1>
     </div>
   )

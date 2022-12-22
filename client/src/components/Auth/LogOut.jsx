@@ -12,11 +12,11 @@ const LogOut = () => {
         return( 
           dispatch(logOut({userName: currentUser})),
           dispatch(resetOption()),
-          document.querySelector(`body`).style.transitionDuration='2s',
-          document.querySelector(`body`).style.height='100vh',
-          document.querySelector(`body`).style.transform='translateX(0)',
-          document.querySelector(`body`).style.overflowX='hidden'
-        )}
+          document.querySelector(`.navCont`).style.transitionDuration='.2s',
+          document.querySelector(`.bodyApp`).style.transitionDuration='5s',
+          document.querySelector(`.bodyApp`).style.transform='translateX(0)',
+          document.querySelector(`.navCont`).style.width='100vw'
+          )}
       }>
         Salir
       </button>

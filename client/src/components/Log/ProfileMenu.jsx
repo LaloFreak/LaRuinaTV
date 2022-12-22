@@ -1,10 +1,9 @@
-import React from 'react'
-import s from './css/ProfileMenu.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import handlerOptionsProfileBtns from '../../handlers/handlerOptionsProfileBtns';
-import { setOption } from '../../middlewares/redux/actions';
+import React from 'react';
+import s from './css/ProfileMenu.module.css';
 import profileMenuCss from './css/ProfileMenu';
-
+import handlerOptionsProfileBtns from '../../handlers/handlerOptionsProfileBtns';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOption } from '../../middlewares/redux/actions';  
 
 export const ProfileMenu = () => {
   const currentUser = useSelector(state=>state.currentUser)

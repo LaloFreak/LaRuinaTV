@@ -1,13 +1,10 @@
 import React from 'react'
-import Nav from '../Utils/Nav'
+import { BodyCss } from '../../functions/BodyCss'
 
 export const Lanzamientos = () => {
+  BodyCss()
   return (
     <div>
-{/* ----------------------NAV---------------------- */}
-
-                        <Nav/>
-
         <h1>Lanzamientos</h1>
     </div>
   )

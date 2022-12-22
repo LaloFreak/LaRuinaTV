@@ -55,7 +55,7 @@ const SliderBtns = (props) => {
                     }
                 }                       
             >
-            <img className={s.sliderBtnPrevImg} alt='' src={playIconb} />
+            <img className={s.sliderBtnPrevImg} alt='prevBtn' src={playIconb} />
             </button>
             <button 
             className={`${s.sliderPostBtn}`}
@@ -110,7 +110,7 @@ const SliderBtns = (props) => {
                 }
             }
             >
-                <img className={s.sliderBtnPostImg} alt='' src={playIconb} />
+                <img className={s.sliderBtnPostImg} alt='postBtn' src={playIconb} />
             </button>
         </>
     )

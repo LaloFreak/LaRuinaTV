@@ -42,7 +42,7 @@ const Visor = () => {
             setVisorTitulo(titulo)
             setVisorArtista(artista)
             setVisorTypeMedia(typeMedia)
-            
+                        
             document.querySelector('.visorPostInfo').style.animationName='infoScale'
             document.querySelector('.visorPostInfo').style.animationIterationCount=inf
             document.querySelector('.visorPostInfo').style.animationDuration=`${timeInterval}s`
@@ -50,6 +50,7 @@ const Visor = () => {
             document.querySelector('.visorBG').style.animationName='aniScale'
             document.querySelector('.visorBG').style.animationIterationCount=inf
             document.querySelector('.visorBG').style.animationDuration=`${timeInterval}s`
+            document.querySelector(`.visor`).style.transform='translateX(0)'
         }, timeInterval*1000)
         return () =>  (clearInterval(interval, timeInterval))
     },[urlID, id, img, artista, titulo, typeMedia, tag, icon, boton1, info, i, visorList, dispatch])

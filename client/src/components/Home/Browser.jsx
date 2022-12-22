@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import s from "../Utils/css/Slider.module.css";
-import Nav from '../Utils/Nav';
 import Visor from '../Utils/Visor';
 import Footer from '../Utils/Footer';
 import Slider from '../Utils/Slider';
-import { BrowserCss } from './css/BrowserCss';
+import { BodyCss } from '../../functions/BodyCss';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getCategorias, getLoggedAccount, getPosts, getUsers, resetMedia } from '../../middlewares/redux/actions';
 
 const Browser = () => {
-    BrowserCss()
+    BodyCss()
     const dispatch = useDispatch()
     const userState = useSelector(state=> state.userState)
     const visorList = useSelector(state=>state.visorList)
@@ -29,9 +28,6 @@ const Browser = () => {
     let id = 0
     return (
         <div className='browserBody'>
-{/* ----------------------NAV---------------------- */}
-
-                         <Nav/>
 
 {/* ---------------------VISOR--------------------- */}
     {
