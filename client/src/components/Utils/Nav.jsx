@@ -1,25 +1,14 @@
 import React, { useState } from 'react';
 import ruinaLogo from '../../design/ruina-logo.png';
+import s from './css/Nav.module.css'
 import { Link } from 'react-router-dom';
-import LogOut from '../Auth/LogOut';
 import { SearchBar } from './SearchBar';
+import { ProfileMenu } from '../Log/ProfileMenu';
+import navBack from './css/Nav';
 
 const Nav = () => {
     const [posNav, setPosNav] = useState()
-
-    window.onscroll = function() {navBack()};
-
-    function navBack() {
-        if (window.pageYOffset>= 100) {
-            setPosNav((window.scrollY-100)/100)
-            document.querySelector('.navCont').style.backgroundColor=`rgba(0, 0, 0, ${posNav})`
-            document.querySelector('.navCont').style.transitionDuration='0.2'
-        }
-        else{
-            document.querySelector('.navCont').style.background="linear-gradient(to bottom, #010101cf, rgba(255, 255, 255, 0))"
-            document.querySelector('.navCont').style.transitionDuration='0.2'
-        }
-    }
+    window.onscroll = function() {navBack(setPosNav, posNav)};
     return (
     <div className='navCont'>
         <div className='ruinaLogoCont'>
@@ -34,10 +23,10 @@ const Nav = () => {
             <li><Link to='/colaborar'>Colaborar</Link></li>
             <li><Link to='/tienda'> Tienda </Link></li>
             <ul className='navSearchBar'>
-            <ul className='navLogOut'>
                 <li><SearchBar/></li>
-            </ul>
-                <li><LogOut/></li>
+                <ul className={s.profileMenuBtn}>
+                    <li><ProfileMenu/></li>
+                </ul>
             </ul>
         </ul>
 

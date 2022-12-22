@@ -4,6 +4,7 @@ import searchIcon from '../../design/search-icon.png';
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { loadingSearchSet, searchMedia, searchStateChange, totalMedia } from '../../middlewares/redux/actions';
+import { searchBarFunction } from './css/SearchBar';
 
 export const SearchBar = () => {
   const dispatch = useDispatch();
@@ -28,28 +29,23 @@ export const SearchBar = () => {
     <div className={s.barCont}>
       <form className={s.form_search_bar} onSubmit={onSubmit}>
         <input 
-        className="liSearchBar"
-        type="text"
-        placeholder="Buscar..."
-        onChange={onInputChange}
+          className={s.liSearchBar}
+          id="liSearchBar"
+          type="text"
+          placeholder="Buscar..."
+          onChange={onInputChange}
+          onMouseEnter={()=>{return searchBarFunction('enter')}}
+          onMouseLeave={()=>{return searchBarFunction('leave')}}
         />
-        {
-          mediaFound? 
-          (
-            (typeof mediaFound === 'string')?
-            <button className={s.liSearchBtn} type="submit" disabled={false}>
-              <img className={s.mediaSearch} src={searchIcon} width='10' alt="search" />
-            </button>
-            :
-            <button className={s.liSearchBtn} type="submit" disabled={true}>
-              <img className={s.mediaSearch} src={searchIcon} width='10' alt="search" />
-            </button>
-          )
-          :
-          <button className={s.liSearchBtn} type="submit" disabled={true}>
-            <img className={s.mediaSearch} src={searchIcon} width='10' alt="search" />
+          <button 
+            className={s.liSearchBtn} 
+            type="submit" 
+            disabled={false}
+            onMouseEnter={()=>{return searchBarFunction('enter')}}
+            onMouseLeave={()=>{return searchBarFunction('leave')}}
+              >
+            <img className={s.mediaSearch} src={searchIcon} height='20' alt="search" />
           </button>
-        }
       </form>
     </div>
   )
