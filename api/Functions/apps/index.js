@@ -2,8 +2,8 @@ const { getFolderFiles, getUrlFileById } = require('../googleapis/index.js');
 
 async function getPostList(db,folder1,folder2){
     const postList = []
-    const folder1Files = await getFolderFiles(folder1).then(res=> {return res.reverse()})
-    const folder2Files = await getFolderFiles(folder2).then(res=> {return res.reverse()})
+    const folder1Files = await getFolderFiles(folder1).then(res=> {return res? res.reverse(): res})
+    const folder2Files = await getFolderFiles(folder2).then(res=> {return res? res.reverse(): res})
 
     for(let i in db){
         let post = {

@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { getPosts, getUsers, resetMedia } from "../middlewares/redux/actions";
 
 export function GlobalStates(){
-    const history = useHistory()
     const dispatch = useDispatch()
+    const history = useHistory()
     const redirect = useSelector(state=>state.redirect)
     dispatch(resetMedia())
     dispatch(getUsers())

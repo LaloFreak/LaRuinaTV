@@ -1,18 +1,18 @@
 import './App.css';
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Browser from './components/Home/Browser';
 import Landing from './components/Home/Landing';
+import Browser from './components/Home/Browser';
 import View from './components/Pages/View';
 import Play from './components/Pages/Play';
-import { Novedades } from './components/Pages/Novedades';
-import { Tienda } from './components/Pages/Tienda';
-import { Lanzamientos } from './components/Pages/Lanzamientos';
-import { Colaborar } from './components/Pages/Colaborar';
-import { GlobalStates } from './functions/GlobalStates';
-import { SlideCanvas } from './components/Utils/SlideCanvas';
-import { useSelector } from 'react-redux';
 import Nav from './components/Utils/Nav';
+import { Tienda } from './components/Pages/Tienda';
+import { Novedades } from './components/Pages/Novedades';
+import { Colaborar } from './components/Pages/Colaborar';
+import { useSelector } from 'react-redux';
+import { SlideCanvas } from './components/Utils/SlideCanvas';
+import { GlobalStates } from './functions/GlobalStates';
+import { Lanzamientos } from './components/Pages/Lanzamientos';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
   GlobalStates()

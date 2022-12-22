@@ -18,6 +18,7 @@ import iconDrive from '../../../design/drive-icon.png'
 import iconWeb from '../../../design/web-icon.png'
 import iconDescarga from '../../../design/descarga-icon.png'
 
+
 const initialState = {
 /*----------------Auth----------------*/
     userList: [],
@@ -113,12 +114,13 @@ export default function rootReducer(state = initialState, action){
                 option: ""
             }
         case LOGGED_ACCOUNT:
+            console.log(action.pathname);
             return{
                 ...state,
                 loggedAccount: action.payload.at(1),
                 currentUser: action.payload.at(1)? action.payload.at(0).alias : '',
                 userState: action.payload.at(1)? "online":"offline",
-                redirect: action.payload.at(1)? "/browser":"/"
+                redirect: action.payload.at(1)? (action.pathname? `${action.pathname}`: "/browser"):"/"
 
             }
         case GET_USERS:

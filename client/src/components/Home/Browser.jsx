@@ -7,9 +7,11 @@ import { BodyCss } from '../../functions/BodyCss';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getCategorias, getLoggedAccount, getPosts, getUsers, resetMedia } from '../../middlewares/redux/actions';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Browser = () => {
     BodyCss()
+    const {pathname} = useLocation()
     const dispatch = useDispatch()
     const userState = useSelector(state=> state.userState)
     const visorList = useSelector(state=>state.visorList)
@@ -19,8 +21,8 @@ const Browser = () => {
         dispatch(resetMedia())
         dispatch(getUsers())
         dispatch(getPosts())
-        dispatch(getLoggedAccount())
-    },[dispatch])
+        dispatch(getLoggedAccount(pathname))
+    },[dispatch, pathname])
     useEffect(()=>{
         dispatch(getCategorias(visorList))
     },[visorList, dispatch])
