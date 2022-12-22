@@ -7,7 +7,6 @@ function findUser(a,m){
 
 function findUsers(ip){
     const usersFound = users.filter(e=>{return (e.userStatus.filter(e=>{return e.ip.filter(el=>{return el.id === ip})}))})
-    console.log(usersFound);
     return usersFound 
 }
 

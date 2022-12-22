@@ -122,7 +122,6 @@ export default function rootReducer(state = initialState, action){
 
             }
         case GET_USERS:
-            console.log(action.payload);
             return{
                 ...state,
                 userList: action.payload.map(e=>{return e.alias}),    
