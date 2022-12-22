@@ -1,5 +1,4 @@
 import React from 'react'
-import Nav from '../Utils/Nav'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -28,12 +27,7 @@ const View = () => {
     },[setMediaLink, urlid])
 
     return (
-        <div>{
-            console.log(infoDetailViewer.urlID, typeMediaList.typeMedia)
-
-            }
-            <Nav />
-            {
+        <div>
             <div className='visor'>
                 <div className='visorBGCanvas'>
                     <img className='visorBG' src={infoDetailViewer.sliderImg} alt='' />
@@ -68,7 +62,6 @@ const View = () => {
                     </div>
                 </div>
             </div>
-            }
         </div>
     )
 }

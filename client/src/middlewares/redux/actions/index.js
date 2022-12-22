@@ -57,13 +57,14 @@ export function newUserCreate(newUser){
     })}
 }
 
-export function getLoggedAccount(){
+export function getLoggedAccount(pathname){
     return async function (dispatch){ 
         await axios.get('http://localhost:3001/users/loggedaccount')
         .then(res => {
             dispatch({
                 type: LOGGED_ACCOUNT,
-                payload: res.data
+                payload: res.data,
+                pathname: pathname
             })
         })
         .catch((e) => {

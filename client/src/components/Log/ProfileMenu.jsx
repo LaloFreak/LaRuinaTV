@@ -1,10 +1,11 @@
-import React from 'react'
-import s from './css/ProfileMenu.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import handlerOptionsProfileBtns from '../../handlers/handlerOptionsProfileBtns';
-import { setOption } from '../../middlewares/redux/actions';
+import React from 'react';
+import s from './css/ProfileMenu.module.css';
 import profileMenuCss from './css/ProfileMenu';
-
+import handlerOptionsProfileBtns from '../../handlers/handlerOptionsProfileBtns';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOption } from '../../middlewares/redux/actions';
+import btnMenuTv from '../../design/ruinatv-icon-play-b.png';
+import userIcon from '../../design/user-icon.png';
 
 export const ProfileMenu = () => {
   const currentUser = useSelector(state=>state.currentUser)
@@ -21,7 +22,11 @@ export const ProfileMenu = () => {
             className={s.profileBtnMenu} 
             onClick={() => {return profileMenuCss('enter')}}
             onMouseLeave={() => {return profileMenuCss('leave')}}
-            >Hola, {currentUser}</li>
+            >
+            <img className={s.userIcon} src={userIcon} alt='userIcon' width='15px' />
+            Hola, {currentUser} 
+            <img className={s.btnMenuTv} src={btnMenuTv} alt='btnMenuTv' width='8px' />
+          </li>
           <li><button 
             id='optionProfileBtn1' 
             className={s.optionProfileBtn} 

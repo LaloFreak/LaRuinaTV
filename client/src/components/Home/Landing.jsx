@@ -7,14 +7,16 @@ import s from './css/Landing.module.css'
 import { LandingCss } from './css/LandingCss'
 import { useDispatch } from 'react-redux'
 import { getLoggedAccount, getUsers } from '../../middlewares/redux/actions'
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Landing = () => {
     LandingCss()
+    const {pathname} = useLocation()
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(getLoggedAccount())
+        dispatch(getLoggedAccount(pathname))
         dispatch(getUsers())
-    },[dispatch])
+    },[dispatch, pathname])
     return (
     <div className={s.landingBody}>
         <div className={s.ruinaLogoCont}>

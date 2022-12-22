@@ -1,14 +1,19 @@
-import React from 'react'
-import Nav from '../Utils/Nav'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
+import { BodyCss } from '../../functions/BodyCss'
+import { getLoggedAccount, getUsers } from '../../middlewares/redux/actions'
 
 export const Novedades = () => {
+  BodyCss()
+  const {pathname} = useLocation()
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getLoggedAccount(pathname))
+    dispatch(getUsers())
+},[dispatch, pathname])
   return (
-    <div>
-{/* ----------------------NAV---------------------- */}
-
-                        <Nav/>
-                        
-        <h1>Novedades</h1>
+    <div className='browserBody'>
     </div>
   )
 }
