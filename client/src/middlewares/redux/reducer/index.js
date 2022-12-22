@@ -120,7 +120,7 @@ export default function rootReducer(state = initialState, action){
                 loggedAccount: action.payload.at(1),
                 currentUser: action.payload.at(1)? action.payload.at(0).alias : '',
                 userState: action.payload.at(1)? "online":"offline",
-                redirect: action.payload.at(1)? (action.pathname? `${action.pathname}`: "/browser"):"/"
+                redirect: action.payload.at(1)? (action.pathname? action.pathname : "/browser"):"/"
 
             }
         case GET_USERS:

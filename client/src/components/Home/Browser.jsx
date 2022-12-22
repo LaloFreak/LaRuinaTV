@@ -6,8 +6,8 @@ import Slider from '../Utils/Slider';
 import { BodyCss } from '../../functions/BodyCss';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getCategorias, getLoggedAccount, getPosts, getUsers, resetMedia } from '../../middlewares/redux/actions';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { getCategorias, getLoggedAccount, getPosts, getUsers, resetMedia } from '../../middlewares/redux/actions';
 
 const Browser = () => {
     BodyCss()

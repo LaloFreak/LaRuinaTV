@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
 import { BodyCss } from '../../functions/BodyCss'
+import { getLoggedAccount, getUsers } from '../../middlewares/redux/actions'
 
 export const Colaborar = () => {
   BodyCss()
+  const {pathname} = useLocation()
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getLoggedAccount(pathname))
+    dispatch(getUsers())
+},[dispatch, pathname])
   return (
-    <div>
-        <h1>Colaborar</h1>
+    <div className='browserBody'>
     </div>
   )
 }

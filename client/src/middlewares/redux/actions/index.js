@@ -64,7 +64,7 @@ export function getLoggedAccount(pathname){
             dispatch({
                 type: LOGGED_ACCOUNT,
                 payload: res.data,
-                path: pathname
+                pathname: pathname
             })
         })
         .catch((e) => {
