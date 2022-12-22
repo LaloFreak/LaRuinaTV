@@ -10,7 +10,8 @@ server.use((req, res, next)=>{
     const corsList = [
         'http://localhost:3000',
         'http://localhost:3001',
-        'http://localhost:3002'
+        'http://localhost:3002',
+        'http://192.168.100.16:3000'
     ];
     if(corsList.includes(req.headers.origin)){   
         res.header('Access-Control-Allow-Origin', (req.headers.origin));

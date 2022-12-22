@@ -38,7 +38,7 @@ server.post('/create', async (req,res,next)=>{
 server.get('/loggedaccount', async (req, res, next)=>{
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const user = await findUserByIp(ip)
-  const log = await user.userStatus.at(0).ip.at(0).onlineState
+  const log = await user? user.userStatus.at(0).ip.at(0).onlineState : false
   res.status(200).json([user, log])
 })
 
