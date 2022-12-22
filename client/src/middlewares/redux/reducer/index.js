@@ -122,9 +122,10 @@ export default function rootReducer(state = initialState, action){
 
             }
         case GET_USERS:
+            console.log(action.payload);
             return{
                 ...state,
-                userList: [...new Set([...state.userList, action.payload.alias])],    
+                userList: action.payload.map(e=>{return e.alias}),    
             }
         case LOG_IN:
             return{
