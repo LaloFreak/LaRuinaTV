@@ -1,9 +1,8 @@
 const express = require('express')
 const server = express.Router()
 
-server.get('/admin/log',(req,res)=>{
-    if (tale) return res.send('TerminalKiller Project')
-    res.status(400).send("Error")
+server.get('/status',(req,res)=>{
+    res.status(200).res("OK")
 })
 
 module.exports = server
