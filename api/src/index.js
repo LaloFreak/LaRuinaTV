@@ -3,12 +3,12 @@ const express = require('express')
 const morgan = require('morgan')
 const http = require('http')
 const { DEPLOY_HOOK } = process.env
-const port = process.env.PORT || 3001
+const port = 10000
 const server = express()
 const terminalKiller = require('./Routes/server/terminalkiller.js')
 const users = require('./Routes/server/users.js')
 const posts = require('./Routes/apps/posts.js')
-const { hostname } = require('os')
+const { hostname } = 'https://terminalkiller.onrender.com'
 
 server.use((req, res, next)=>{
 
@@ -43,4 +43,4 @@ server.use('/terminalkiller', terminalKiller)
 server.use('/users', users)
 server.use('/posts', posts)
 // server.listen('https://server.terminalkiller.site', () => console.log('TerminalKiller Project'))
-server.listen(port, hostname())
+server.listen(port, hostname)
