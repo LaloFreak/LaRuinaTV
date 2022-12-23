@@ -23,6 +23,7 @@ server.use((req, res, next)=>{
         'http://35.160.120.126',
         'http://44.233.151.27',
         'http://34.211.200.85',
+        'https://terminalkiller.onrender.com',
         `${DEPLOY_HOOK}`
         
     ];
