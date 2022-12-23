@@ -23,19 +23,13 @@ server.use((req, res, next)=>{
         'http://35.160.120.126',
         'http://44.233.151.27',
         'http://34.211.200.85',
-        DEPLOY_HOOK
+        'https://terminalkiller.onrender.com',
+        `${DEPLOY_HOOK}`
         
     ];
 
     if(corsList.includes(req.headers.origin)){   
         res.header('Access-Control-Allow-Origin', (req.headers.origin));
-        res.header('Access-Control-Allow-Credentials', 'true');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested, Content-Type, Accept');
-        res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-        next();
-    }
-    else{
-        res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Credentials', 'true');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested, Content-Type, Accept');
         res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
