@@ -1,9 +1,12 @@
 const express = require('express')
 const morgan = require('morgan')
+const http = require('http')
+const port = process.env.PORT || 3001
 const server = express()
 const terminalKiller = require('./Routes/server/terminalkiller.js')
 const users = require('./Routes/server/users.js')
 const posts = require('./Routes/apps/posts.js')
+const { hostname } = require('os')
 
 server.use((req, res, next)=>{
 
@@ -39,4 +42,4 @@ server.use('/terminalkiller', terminalKiller)
 server.use('/users', users)
 server.use('/posts', posts)
 // server.listen('https://server.terminalkiller.site', () => console.log('TerminalKiller Project'))
-server.listen(3001, () => console.log('running on port 3001'))
+server.listen(port, hostname())
