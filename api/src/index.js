@@ -17,7 +17,10 @@ server.use((req, res, next)=>{
         'http://localhost:3002',
         'http://192.168.100.16:3000',
         'https://laruinarecords.cl',
-        'https://tv.laruinarecords.cl'
+        'https://tv.laruinarecords.cl',
+        '35.160.120.126',
+        '44.233.151.27',
+        '34.211.200.85'
     ];
 
     if(corsList.includes(req.headers.origin)){   
