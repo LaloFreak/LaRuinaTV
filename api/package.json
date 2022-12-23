@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test"
+    "start": "node ./node_modules/react-scripts/bin/react-scripts.js start",
+    "test": "mocha -w ./tests/**/*.spec.js",
+    "build": "react-scripts build"
   },
   "author": "TerminalKiller Project",
   "license": "ISC",
@@ -15,7 +15,6 @@
     "npm": ">=6.14.6"
   },
   "dependencies": {
-    "@craco/craco": "^7.0.0-alpha.3",
     "@google-cloud/local-auth": "^2.1.0",
     "@googleapis/docs": "^2.0.0",
     "axios": "^1.1.3",
