@@ -8,7 +8,7 @@ const server = express()
 const terminalKiller = require('./Routes/server/terminalkiller.js')
 const users = require('./Routes/server/users.js')
 const posts = require('./Routes/apps/posts.js')
-const { hostname } = 'https://terminalkiller.onrender.com'
+const hostname = 'https://terminalkiller.onrender.com'
 
 server.use((req, res, next)=>{
 
