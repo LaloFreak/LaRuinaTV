@@ -3,7 +3,7 @@ const morgan = require('morgan')
 const http = require('http')
 const port = 10000
 const server = express()
-const central = require('./Routes/server/central.js')
+const terminal = require('./Routes/server/terminal.js')
 const users = require('./Routes/server/users.js')
 const posts = require('./Routes/apps/posts.js')
 const hostname = 'https://terminalkiller.onrender.com'
@@ -35,7 +35,7 @@ server.use((req, res, next)=>{
 
 server.use(morgan('dev'))
 server.use(express.json())
-server.use('/central', central)
+server.use('/terminal', terminal)
 server.use('/users', users)
 server.use('/posts', posts)
 // server.listen('https://server.terminalkiller.site', () => console.log('TerminalKiller Project'))
