@@ -1,8 +1,6 @@
-require('dotenv')
 const express = require('express')
 const morgan = require('morgan')
 const http = require('http')
-const { DEPLOY_HOOK } = process.env
 const port = 10000
 const server = express()
 const terminalKiller = require('./Routes/server/terminalkiller.js')
@@ -23,9 +21,7 @@ server.use((req, res, next)=>{
         'http://35.160.120.126',
         'http://44.233.151.27',
         'http://34.211.200.85',
-        'https://terminalkiller.onrender.com',
-        `${DEPLOY_HOOK}`
-        
+        'https://terminalkiller.onrender.com',        
     ];
 
     if(corsList.includes(req.headers.origin)){   
