@@ -1,5 +1,9 @@
 {
     "scripts": {
       "serve": "webpack serve"
-    }
+    },
+    "devDependencies": {
+        "webpack-cli": "^5.0.1"
+      }
+    
 }
