@@ -1,13 +1,14 @@
 # La Ruina TV | SoyHenry Proyecto Final
-Cohorte 31b - Grupo 3 
+<details>
+##### <summary>Cohorte 31b - Grupo 3</summary>
+<p></p>
+</details>
 
-FrontEnd
+### FrontEnd
+Plataforma de contenido multimedia y venta de merchandising del estudio de grabación "La Ruina Records"
 
 ![laruinatv]![react]
 
-
-
-Plataforma de contenido multimedia y venta de merchandising del estudio de grabación "La Ruina Records"
 
 
 [laruinatv]: https://user-images.githubusercontent.com/105039526/209430968-0855a7b8-c875-4633-a36e-7fde25568555.png
