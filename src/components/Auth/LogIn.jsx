@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { onChangeInput, OnSubmitLogIn } from '../../handlers/auth';
+import { onChangeInput } from '../../handlers/auth';
 import { logIn} from '../../middlewares/redux/actions';
 import { authCss } from './css/authCss';
 import s from './css/LogIn.module.css'
@@ -53,7 +53,11 @@ const LogIn = () => {
                 className='button1'
                 type='submit'
                 value='onSubmit'
-                onClick={e=> {return  e.preventDefault(),dispatch(logIn([input]))}}
+                onClick={e=> {
+                  return(  
+                  e.preventDefault(),
+                  dispatch(logIn([input])))
+                }}
                 >Entrar</button></li>
                 <li><button 
                 className='button2'
