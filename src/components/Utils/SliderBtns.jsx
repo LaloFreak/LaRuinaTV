@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import playIconb from '../../design/ruinatv-icon-play-b.png'
+import { useDispatch } from 'react-redux';
+import { getMedia } from '../../middlewares/redux/actions';
 
 const SliderBtns = (props) => {
+    const dispatch = useDispatch()
 
     const k = -210
     const [i, setPosi] = useState(k)
@@ -61,9 +64,10 @@ const SliderBtns = (props) => {
             className={`${s.sliderPostBtn}`}
             id={`${key}PostBtn`}
             onClick={()=>{
+                dispatch(getMedia())
                 setPosi(i+k)
                 setPosn(n+k)
-                if (i<0 && i>(props.categoria.length-1)*k){
+                if (i<0 && i>(props.categories.length-1)*k){
                 return (
                     document.querySelector(`#${key}ListaItems`).style.transform=`translate(${i}px)`,
                     document.querySelector(`#${key}ListaItems`).style.transitionDuration='1s',
@@ -72,7 +76,7 @@ const SliderBtns = (props) => {
                     
                 )}
                     
-                if (i===(props.categoria.length-1)*k){
+                if (i===(props.categories.length-1)*k){
                 return (
                     document.querySelector(`#${key}ListaItems`).style.transform=`translate(${i}px)`,
                     document.querySelector(`#${key}ListaItems`).style.transitionDuration='1s',
@@ -83,7 +87,7 @@ const SliderBtns = (props) => {
                     )}
                 }
             } onMouseEnter={()=>{
-                if(props.categoria.length > 1){
+                if(props.categories.length > 1){
                     return(
                         document.querySelector(`#${key}PostBtn`).style.transitionDuration='1s',
                         document.querySelector(`#${key}PostBtn`).style.cursor='pointer',
@@ -91,7 +95,7 @@ const SliderBtns = (props) => {
                         document.querySelector(`#${key}PostBtn`).style.background='linear-gradient(to left, rgb(0, 0, 0), transparent)'
 
                 )}
-                if(props.categoria.length === 1){
+                if(props.categories.length === 1){
                     return(
                         document.querySelector(`#${key}PostBtn`).style.display="none",
                         document.querySelector(`#${key}PostBtn`).style.transitionDuration='1s'
